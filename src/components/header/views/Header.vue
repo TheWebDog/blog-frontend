@@ -1,7 +1,7 @@
 <template>
   <div class="header_div">
     <!-- 大屏时销毁此部分 -->
-    <div class="blog_name" v-if="!media_over_width920px">
+    <div class="blog_name" v-if="!media_over_width935px">
       <div class="the_blog_name">
         <i class="el-icon-s-home"></i>WebDog的主页
       </div>
@@ -60,7 +60,7 @@
       </el-drawer>
     </div>
     <!-- 小屏时销毁此部分 -->
-    <div class="header_div1" v-if="media_over_width920px">
+    <div class="header_div1" v-if="media_over_width935px">
       <el-row :gutter="20">
         <el-col :span="5" class="blog_name2">
           <el-link>
