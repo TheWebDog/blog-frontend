@@ -12,7 +12,7 @@
         )
       "
       stripe
-      style="width: 600px; min-width: 630px"
+      style="width: 600px; min-width: 660px"
     >
       <el-table-column type="expand" width="60" label="展开">
         <template slot-scope="props">
@@ -74,7 +74,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column sortable prop="date" label="日期" width="120">
+      <el-table-column sortable prop="date" label="日期" width="150">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
           <span style="margin-left: 10px">{{ scope.row.date }}</span>

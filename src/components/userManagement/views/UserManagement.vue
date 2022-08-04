@@ -10,9 +10,9 @@
         )
       "
       stripe
-      style="width: 640px"
+      style="width: 670px"
     >
-      <el-table-column sortable prop="date" label="日期" width="120">
+      <el-table-column sortable prop="date" label="日期" width="150">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
           <span style="margin-left: 10px">{{ scope.row.date }}</span>
