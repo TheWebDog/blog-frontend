@@ -72,6 +72,7 @@
   position: relative;
   width: 80px;
   height: 100%;
+  margin-right: 5px;
 }
 .textIntroduction_li_div > .el-tag {
   position: absolute;

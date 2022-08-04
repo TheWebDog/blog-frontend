@@ -121,7 +121,7 @@ export default {
       if (this.Username.length != 0 && this.Password.length != 0) {
         var name = this.Username, password = this.Password;
         axios
-          .post('http://localhost:4000/user/login', { name, password })
+          .post('/user/login', { name, password })
           .then((res) => {
             var { power,name,_id } = res.data.user
             this.$cookies.set('key', { power }, '1d')
@@ -149,7 +149,7 @@ export default {
         var name = this.Username, password = this.Password;
         console.log('register axiosing')
         axios
-          .post('http://localhost:4000/user/register', { name, password })
+          .post('/user/register', { name, password })
           .then((res) => {
             if (res.data == '注册成功') {
               this.$message.success(res.data);

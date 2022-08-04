@@ -3,7 +3,7 @@ import { GET_ARTICLEMANAGEDATA, REMOVE_DATA } from './type'
 export default {
   [GET_ARTICLEMANAGEDATA]: function (state) {
     axios
-      .post('http://localhost:4000/page/getList', {})
+      .post('/page/getList', {})
       .then((res) => {
         state.ArticleManageData = res.data
       })
@@ -13,7 +13,7 @@ export default {
   },
   [REMOVE_DATA]: function (state, id) {
     axios
-    .post('http://localhost:4000/page/removeArticle', { id })
+    .post('/page/removeArticle', { id })
     .then((res) => {
       alert(res.data)
     })

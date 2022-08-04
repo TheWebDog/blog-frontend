@@ -3,7 +3,7 @@ import { GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} f
 export default {
   [GET_ARTICLEPAGE]: function (state, id) {
     axios
-      .post('http://localhost:4000/page/getArticlePage', id)
+      .post('/page/getArticlePage', id)
       .then((res) => {
         state.article = res.data
       })
@@ -13,7 +13,7 @@ export default {
   },
   [SUBMIT_COMMENT]: function (state, obj) {
     axios
-      .post('http://localhost:4000/page/submitComment', obj)
+      .post('/page/submitComment', obj)
       .then((res) => {
         console.log(res.data)
         switch (res.data) {
@@ -33,7 +33,7 @@ export default {
   },
   [GET_COMMENT]: function (state, articleId) {
     axios
-      .post('http://localhost:4000/page/getArticleComment', { articleId })
+      .post('/page/getArticleComment', { articleId })
       .then((res) => {
         state.articleComment = res.data
       })
@@ -43,7 +43,7 @@ export default {
   },
   [SUBMIT_COMMENT_COMMENT]: function (state, obj) {
     axios
-      .post('http://localhost:4000/page/submitCommentComment', obj)
+      .post('/page/submitCommentComment', obj)
       .then((res) => {
         console.log(res.data)
         alert(res.data)

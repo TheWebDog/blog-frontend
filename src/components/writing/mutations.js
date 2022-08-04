@@ -5,7 +5,7 @@ export default {
   // 获取文章分类
   [GET_SERVER_CLASSIFY]: function (state) {
     axios
-      .get('http://localhost:4000/page/getClassify')
+      .get('/page/getClassify')
       .then((res) => {
         state.classifyList = res.data
       })
@@ -34,7 +34,7 @@ export default {
   [UPLOAD_File]: function (state) {
     var theData = state.uploadFromData
     axios
-      .post('http://localhost:4000/page/submitPage', theData, {
+      .post('/page/submitPage', theData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then((res) => {
@@ -64,7 +64,7 @@ export default {
   // 保存文章-草稿
   [SAVE_File]: function (state, saveData) {
     axios
-      .post('http://localhost:4000/page/savePage', saveData, {
+      .post('/page/savePage', saveData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then((res) => {

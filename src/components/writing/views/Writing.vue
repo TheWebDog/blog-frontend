@@ -147,7 +147,7 @@ export default {
       var mavon_editor_pic_formdata = new FormData();
       mavon_editor_pic_formdata.append("mavon_editor_pic", $file);
       axios
-        .post('http://localhost:4000/page/submitMavonPic', mavon_editor_pic_formdata, { headers: { "Content-Type": "multipart/form-data" } })
+        .post('/page/submitMavonPic', mavon_editor_pic_formdata, { headers: { "Content-Type": "multipart/form-data" } })
         .then((res) => {
           // 将后端返回的url替换到文本原位置
           this.mdPic.set(res.data.requirePath, res.data.pic_path);

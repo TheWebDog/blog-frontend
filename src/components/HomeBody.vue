@@ -3,7 +3,7 @@
     <div class="homeBody_image">
       <el-image
         style="width: 100%;"
-        src="http://localhost:4000/page/getPic?picUrl=public\homePage2.gif"
+        :src="$axios.defaults.baseURL+'/page/getPic?picUrl=public\\homePage2.gif'"
         fit="cover"
       ></el-image>
     </div>
@@ -25,7 +25,7 @@ export default {
     // http://localhost:4000/page/getPic?picUrl=public\homePage2.gif
   },
   created () {
-    
+    console.log(this)
   },
 }
 </script>
