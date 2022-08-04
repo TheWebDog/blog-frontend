@@ -7,7 +7,7 @@
           <Header></Header>
         </div>
       </el-header>
-
+<!-- {{$store.getters.getDoubleCount}} -->
       <el-container class="Home_body">
         <!-- 内容区 -->
         <el-main class="Home_el_main">
@@ -15,19 +15,18 @@
             <router-view></router-view>
           </div>
         </el-main>
-
         <!-- 内容侧边区 -->
         <!-- 小屏时销毁此部分 -->
         <el-aside
           class="aside_el_aside"
           width="330px"
-          v-if="media_over_width1100px"
+          v-if="media_over_width1200px"
         >
           <Aside></Aside>
         </el-aside>
       </el-container>
       <!-- 大屏时销毁此部分 -->
-      <div v-if="!media_over_width1100px">
+      <div v-if="!media_over_width1200px">
         <div class="Aside_btn">
           <el-button
             type="primary"
@@ -73,22 +72,34 @@ export default {
   },
   data () {
     return {
-      windoWidth: document.documentElement.clientWidth,
+      // windoWidth: document.documentElement.clientWidth,
+
+      // screenWidth:  this.$store.getters.getDoubleCount,
       home_drawer: false,
     }
   },
   computed: {
-    media_over_width800px () {
-      return this.windoWidth > 800
+    // media_over_width800px () {
+    //   return this.screenWidth > 800
+    // },
+    media_over_width1200px () {
+      return this.$store.getters.getDoubleCount > 1200
     },
-    media_over_width1100px () {
-      return this.windoWidth > 1100
-    },
-    media_width_in_801px_and_1100px () {
-      return this.windoWidth > 800 && this.windoWidth < 1100
-    },
+    // media_width_in_801px_and_1200px () {
+    //   return this.screenWidth > 800 && this.screenWidth < 1200
+    // },
   },
-
+  mounted () {
+    window.onresize = () => {
+      return (() => {
+        // this.screenWidth = document.body.clientWidth
+        this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+      })()
+    }
+  },
+  created(){
+    this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+  }
 
 }
 </script>

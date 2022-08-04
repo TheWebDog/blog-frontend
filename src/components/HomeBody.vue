@@ -25,7 +25,7 @@ export default {
     // http://localhost:4000/page/getPic?picUrl=public\homePage2.gif
   },
   created () {
-    console.log(this)
+    // console.log(this)
   },
 }
 </script>

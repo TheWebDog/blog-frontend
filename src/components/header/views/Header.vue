@@ -1,7 +1,7 @@
 <template>
   <div class="header_div">
     <!-- 大屏时销毁此部分 -->
-    <div class="blog_name" v-if="!media_over_width900px">
+    <div class="blog_name" v-if="!media_over_width920px">
       <div class="the_blog_name">
         <i class="el-icon-s-home"></i>WebDog的主页
       </div>
@@ -60,7 +60,7 @@
       </el-drawer>
     </div>
     <!-- 小屏时销毁此部分 -->
-    <div class="header_div1" v-if="media_over_width900px">
+    <div class="header_div1" v-if="media_over_width920px">
       <el-row :gutter="20">
         <el-col :span="5" class="blog_name2">
           <el-link>
@@ -121,14 +121,18 @@ export default {
       drawer: false,
       tabPosition: 'left',
       loginornot: this.$cookies.isKey('key'),
-      windoWidth: document.documentElement.clientWidth,
+      // windoWidth: document.documentElement.clientWidth,
+      // screenWidth:  document.body.clientWidth,
     }
   },
   computed: {
     ...mapGetters([]),
-    media_over_width900px () {
-      return this.windoWidth > 900
+    media_over_width920px () {
+      return this.$store.getters.getDoubleCount > 920
     },
+  },
+  mounted () {
+
   },
   methods: {
     ...mapActions(['action_getSearchList', 'action_setInputValue']),

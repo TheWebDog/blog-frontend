@@ -24,8 +24,14 @@ const store = new Vuex.Store({
   state: {
     isRouterAlive: true, // 用于刷新writing页面的state
     isRouterAliveTimeout: null,
+    screenWidth:null,
   },
-  mutations: {
+  getters : {  //每一个getters的函数都可以接受一个state参数
+    getDoubleCount : function(state){
+        return state.screenWidth
+    }
+  },
+  mutations: {// 修改state的唯一方式  定义的函数接受的参数：1、state  2、自定义的参数
     increment(state) {
       // 用于刷新writing页面的方法
       state.isRouterAlive = false
@@ -34,6 +40,9 @@ const store = new Vuex.Store({
         state.isRouterAlive = true
       }, 1)
     },
+    upDateScreenWidth (state,num) {
+      state.screenWidth=num
+    }
   },
   modules: {
     writingStore,

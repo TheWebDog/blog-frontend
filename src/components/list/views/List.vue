@@ -61,13 +61,13 @@ export default {
   name: "List",
   data () {
     return {
-      windoWidth: document.documentElement.clientWidth,
+      screenWidth:  document.body.clientWidth,
     }
   },
   computed: {
     ...mapGetters(['get_articleList']),
     media_lessThan_width500px () {
-      return this.windoWidth < 500
+      return this.screenWidth < 500
     },
   },
   methods: {
@@ -78,9 +78,26 @@ export default {
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`);
     },
+
+    
   },
   created () {
     this.action_getArticleList(this.$router.currentRoute.fullPath)
   },
+  mounted () {
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+      })()
+    }
+  },
+  // watch: {
+  //   screenWidth: {
+  //     handler: function () {
+  //     },
+  //     immediate: true,
+  //     deep:true
+  //   },
+  // }
 }
 </script>

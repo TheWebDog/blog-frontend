@@ -61,12 +61,12 @@
     height: 141px;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   /* .list_li {
     height: 150px;
   } */
 }
-@media (min-width: 601px) and (max-width: 1100px) {
+@media (min-width: 601px) and (max-width: 1200px) {
   .textIntroduction_ul {
     width: calc(100% - 150px);
     padding-right: 10px;
@@ -81,7 +81,7 @@
     height: 150px;
   }
 }
-@media (min-width: 801px) and (max-width: 1100px) {
+@media (min-width: 801px) and (max-width: 1200px) {
   .Home_body {
     box-sizing: border-box;
     /* max-width: 700px; */
