@@ -1,0 +1,79 @@
+.list_ul {
+  list-style: none;
+}
+.list_li {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 5px 4px;
+  cursor: pointer;
+}
+/* 因为用了el元素 他列表里有margin和padding 导致元素异常 */
+.list_div > * {
+  box-sizing: border-box;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.list_li_div {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.el-pagination {
+  text-align: center;
+  margin: 10px;
+}
+.list_li_div>.el-card__body {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  padding: 5px 20px !important;
+}
+
+.textIntroduction_ul {
+  box-sizing: border-box;
+  list-style: none;
+  height: 100%;
+  padding-left: 30px;
+}
+.textIntroduction_li:nth-child(1) {
+  margin: 5px 0px;
+  height: 25px;
+}
+.el_card_title {
+  height: 25px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 25px;
+}
+.textIntroduction_li:nth-child(2) {
+  margin: 5px 0px;
+  height: 60px;
+}
+.el_card_generalization {
+  height: 60px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  /* 文本溢出 显示为省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.textIntroduction_li:nth-child(3) {
+  margin: 5px 0px;
+  height: 30px;
+  display: flex;
+}
+.textIntroduction_li_div {
+  position: relative;
+  width: 80px;
+  height: 100%;
+}
+.textIntroduction_li_div > .el-tag {
+  position: absolute;
+  height: 30px;
+}

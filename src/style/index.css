@@ -1,0 +1,22 @@
+
+/* 默认css */
+/* @import url('./major/MD.css'); */
+@import url('./major/aboutMe.css');
+@import url('./major/search.css');
+@import url('./major/articleClassify.css');
+@import url('./major/article.css');
+@import url('./major/writing.css');
+@import url('./major/manager.css');
+@import url('./major/aside.css');
+@import url('./major/list.css');
+@import url('./major/footer.css');
+@import url('./major//header.css');
+@import url('./major/home.css');
+
+
+
+
+
+/* 响应式css */
+@import url('./media/maxWidth.css');
+@import url('./media/minWidth.css');

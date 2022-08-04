@@ -1,0 +1,101 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
+}
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0);
+  /* 窄屏侧边导航栏影响padding */
+  padding: 0px !important;
+}
+
+
+/* body::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+} */
+body::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+body::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  background-color: skyblue;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+body::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #ededed;
+  border-radius: 10px;
+}
+
+
+.el-main{
+  box-sizing: border-box;
+}
+.el-header,
+.el-footer,
+.Home_Header,
+.Home_Footer {
+  height: 100%;
+}
+.el-header {
+  border-bottom: 1px solid #e3e3e3;
+  background-color: #ffffff;
+}
+.el-footer {
+  text-align: center;
+}
+.homeBody_image {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px auto;
+  padding: 0px 10px;
+}
+
+/* .Aside_small_width_div{
+} */
+.aside_el_drawer > div > div {
+  min-width: 300px;
+  max-width: 300px;
+}
+.el-drawer__body::-webkit-scrollbar {
+  width: 0;
+}
+.aside_el_drawer > div > div >section{
+  margin-top: -100px;
+}
+.Aside_btn{
+  position: fixed;
+  right: -20px;
+  top: 300px;
+}
+.Aside_btn:hover{
+  right: -10px;
+}
+
+.aside_el_aside{
+  position: sticky !important;
+  z-index: 3;
+  top: 0;
+}
