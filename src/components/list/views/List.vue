@@ -8,6 +8,7 @@
             v-for="(item, index) in get_articleList"
             :key="index"
             @click="to_article(item._id)"
+            v-scroll-reveal.reset
           >
             <el-card class="list_li_div" shadow="hover">
               <el-image
@@ -15,6 +16,7 @@
                 :src="item.coverRequirePath"
                 fit="contain"
               ></el-image>
+              <!-- {{item.coverRequirePath}} -->
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
