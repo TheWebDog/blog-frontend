@@ -127,7 +127,7 @@ export default {
   },
   computed: {
     ...mapGetters([]),
-    media_over_width920px () {
+    media_over_width935px () {
       return this.$store.getters.getDoubleCount > 935
     },
   },
