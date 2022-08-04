@@ -128,7 +128,7 @@ export default {
   computed: {
     ...mapGetters([]),
     media_over_width920px () {
-      return this.$store.getters.getDoubleCount > 920
+      return this.$store.getters.getDoubleCount > 935
     },
   },
   mounted () {
