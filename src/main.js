@@ -12,7 +12,7 @@ import axios from "axios"
 
 // 全局配置axios的请求根路径
 // axios.defaults.baseURL = "http://localhost:6060"
-axios.defaults.baseURL = "https://blog-backend-kappa.vercel.app"
+axios.defaults.baseURL = "https://blog-backend-pi.vercel.app/"
 
 // 将axios挂载到Vue上
 Vue.prototype.$axios = axios
