@@ -1,6 +1,7 @@
 <template>
   <div class="homeBody_div">
     <div class="homeBody_image">
+      <!-- <a :href="$axios.defaults.baseURL">a</a> -->
       <el-image
         style="width: 100%;"
         :src="$axios.defaults.baseURL+'/page/getPic?picUrl=public\\homePage2.gif'"
@@ -26,6 +27,14 @@ export default {
   },
   created () {
     // console.log(this)
+    this.$axios
+      .get(this.$axios.defaults.baseURL)
+      .then((res) => {
+        console.log(res)
+      })
+        .catch((err) => {
+          console.log(err, '--错误')
+        })
   },
 }
 </script>
