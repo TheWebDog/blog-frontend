@@ -28,7 +28,7 @@ export default {
   created () {
     // console.log(this)
     this.$axios
-      .get(this.$axios.defaults.baseURL)
+      .get("https://blog-backend-nu.vercel.app/")
       .then((res) => {
         console.log(res)
       })
