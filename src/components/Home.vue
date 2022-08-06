@@ -83,7 +83,7 @@ export default {
     //   return this.screenWidth > 800
     // },
     media_over_width1200px () {
-      return this.$store.getters.getDoubleCount > 1200
+      return this.$store.getters.getDoubleCount >= 1200
     },
     // media_width_in_801px_and_1200px () {
     //   return this.screenWidth > 800 && this.screenWidth < 1200
