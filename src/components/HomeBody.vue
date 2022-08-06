@@ -4,7 +4,7 @@
       <!-- <a :href="$axios.defaults.baseURL">a</a> -->
       <el-image
         style="width: 100%;"
-        src="http://rg6fzodqg.bkt.clouddn.com/BlogPublic/homePage2.gif"
+        :src="$axios.defaults.baseURL+'/page/getPic/homePage2.gif'"
         fit="cover"
       ></el-image>
     </div>
