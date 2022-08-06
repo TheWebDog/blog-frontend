@@ -72,7 +72,7 @@ export default {
   },
   data () {
     return {
-      // windoWidth: document.documentElement.clientWidth,
+      // windoWidth: document.documentElement.scrollWidth,
 
       // screenWidth:  this.$store.getters.getDoubleCount,
       home_drawer: false,
@@ -92,13 +92,13 @@ export default {
   mounted () {
     window.onresize = () => {
       return (() => {
-        // this.screenWidth = document.body.clientWidth
-        this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+        // this.screenWidth = document.body.scrollWidth
+        this.$store.commit("upDateScreenWidth", document.body.scrollWidth)
       })()
     }
   },
   created(){
-    this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+    this.$store.commit("upDateScreenWidth", document.body.scrollWidth)
   }
 
 }

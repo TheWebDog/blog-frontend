@@ -81,7 +81,7 @@ export default {
           RouterName: "回到主页"
         },
       ],
-      manager_isCollapse: document.body.clientWidth < 460 ? true : false,
+      manager_isCollapse: document.body.scrollWidth < 460 ? true : false,
     }
   },
   computed: {

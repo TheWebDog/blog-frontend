@@ -121,8 +121,8 @@ export default {
       drawer: false,
       tabPosition: 'left',
       loginornot: this.$cookies.isKey('key'),
-      // windoWidth: document.documentElement.clientWidth,
-      // screenWidth:  document.body.clientWidth,
+      // windoWidth: document.documentElement.scrollWidth,
+      // screenWidth:  document.body.scrollWidth,
     }
   },
   computed: {
