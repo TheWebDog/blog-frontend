@@ -86,7 +86,6 @@
         </div>
       </div>
     </div>
-    <img :src="url" alt="图片无了">
   </div>
 </template>
 
@@ -104,9 +103,6 @@ export default {
   },
   data () {
     return {
-      url: '',
-
-
       // v-model
       title: "", // 文章标题
       category: "", // 文章分类
