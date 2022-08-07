@@ -6,9 +6,8 @@
           <li class="list_li" v-for="(item, index) in get_articleList" :key="index" @click="to_article(item._id)"
             v-scroll-reveal.reset>
             <el-card class="list_li_div" shadow="hover">
-              <el-image class="el_card_el_image" :src="getPicbase64(item.coverRequirePath)" fit="contain"></el-image>
+              <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image>
               <!-- {{item.coverRequirePath}} -->
-              {{getPicbase64(item.coverRequirePath)}}
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
@@ -64,18 +63,19 @@ export default {
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`);
     },
-    getPicbase64 (coverRequirePath) {
-      var picUrl
-      axios
-        .get(coverRequirePath)
-        .then((res) => {
-          picUrl = res.data
-          return picUrl
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
+    // getPicbase64 (coverRequirePath ,callback) {
+    //   var picUrl
+    //   axios
+    //     .get(coverRequirePath)
+    //     .then((res) => {
+    //       picUrl = res.data
+    //       return picUrl
+    //        callback(res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
 
 
   },
