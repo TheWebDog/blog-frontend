@@ -136,7 +136,8 @@ export default {
     },
     knowfinished () {
       console.log('knowfinished')
-      if (this.get_finished()) {
+      var finished =this.get_finished
+      if (finished) {
         this.$router.go(0)
       } else {
         setTimeout(() => {
