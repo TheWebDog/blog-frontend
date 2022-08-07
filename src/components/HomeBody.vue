@@ -4,7 +4,7 @@
       <!-- <a :href="$axios.defaults.baseURL">a</a> -->
       <el-image
         style="width: 100%;"
-        src="../static/homePage2.gif"
+        :src="require('../static/homePage2.gif')"
         fit="cover"
       ></el-image>
     </div>
