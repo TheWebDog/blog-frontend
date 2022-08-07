@@ -6,6 +6,15 @@ export default {
       .post('/page/getArticlePage', id)
       .then((res) => {
         state.article = res.data
+        var coverRequirePath = res.data.coverRequirePath
+        axios
+          .get(coverRequirePath)
+          .then((res) => {
+            state.picUrl = res.data
+          })
+          .catch((err) => {
+           console.log(err)
+          })
       })
       .catch((err) => {
         console.log(err)

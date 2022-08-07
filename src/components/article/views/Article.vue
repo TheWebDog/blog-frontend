@@ -5,7 +5,7 @@
         <h1 class="article_title">{{ get_ArticlePage.title }}</h1>
         <el-image
           class="article_background_img"
-          :src="get_ArticlePage.coverRequirePath"
+          :src="get_picUrl"
           fit="contain"
         ></el-image>
         <h4 class="article_category">
@@ -123,10 +123,11 @@ export default {
     return {
       theComment: '',
       loginornot: this.$cookies.isKey('key'),
+      // coverRequirePath:get_ArticlePage.coverRequirePath
     }
   },
   computed: {
-    ...mapGetters(['get_ArticlePage', 'get_ArticleComment']),
+    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl']),
   },
   methods: {
     ...mapActions(['action_getArticlePage', 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
