@@ -113,7 +113,6 @@
 </template>
 
 <script>
-import { async } from 'q'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: "Article",
