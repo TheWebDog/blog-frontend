@@ -13,7 +13,7 @@
             <el-card class="list_li_div" shadow="hover">
               <el-image
                 class="el_card_el_image"
-                :src="item.coverRequirePath"
+                :src="getPicbase64(item.coverRequirePath)"
                 fit="contain"
               ></el-image>
               <!-- {{item.coverRequirePath}} -->
@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_articleList']),
+    ...mapGetters(['get_articleList','get_picUrl']),
     media_lessThan_width500px () {
       return this.screenWidth < 500
     },
@@ -78,6 +78,18 @@ export default {
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`);
     },
+    getPicbase64 (coverRequirePath) {
+      var picUrl
+        axios
+          .get(coverRequirePath)
+          .then((res) => {
+            picUrl = res.data
+            return picUrl
+          })
+          .catch((err) => {
+           console.log(err)
+          })
+    }
 
     
   },

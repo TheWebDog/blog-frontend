@@ -9,7 +9,7 @@ export default {
     .post('/page/search', { value })
       .then((res) => {
       // console.log(res.data)
-      state.articleList = res.data
+        state.articleList = res.data
     })
     .catch((err) => {
       console.log(err)
