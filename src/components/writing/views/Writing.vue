@@ -157,13 +157,11 @@ export default {
           // this.mdPic.set(res.data.requirePath, res.data.pic_path);
           // this.$refs.md.$img2Url(pos, res.data.requirePath);
 
-          if (res && res.data) {
-            const dataInfo = res.data.data
-            console.log(res.data)
-            console.log(dataInfo)
-            const bufferUrl = btoa(new Uint8Array(dataInfo).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-            this.url = 'data:image/png;base64,' + bufferUrl;//imgURL就是最后的图片base64数据
-          }
+          const dataInfo = res.data.data.data
+          console.log(dataInfo)
+          const bufferUrl = btoa(new Uint8Array(dataInfo).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+          this.url = 'data:image/png;base64,' + bufferUrl;//imgURL就是最后的图片base64数据
+
 
 
         })
