@@ -86,6 +86,7 @@
         </div>
       </div>
     </div>
+    <img :src="url" alt="图片无了">
   </div>
 </template>
 
@@ -103,6 +104,9 @@ export default {
   },
   data () {
     return {
+      url: '',
+
+
       // v-model
       title: "", // 文章标题
       category: "", // 文章分类
@@ -150,8 +154,18 @@ export default {
         .post('/page/submitMavonPic', mavon_editor_pic_formdata, { headers: { "Content-Type": "multipart/form-data" } })
         .then((res) => {
           // 将后端返回的url替换到文本原位置
-          this.mdPic.set(res.data.requirePath, res.data.pic_path);
-          this.$refs.md.$img2Url(pos, res.data.requirePath);
+          // this.mdPic.set(res.data.requirePath, res.data.pic_path);
+          // this.$refs.md.$img2Url(pos, res.data.requirePath);
+
+          if (res && res.data) {
+            const dataInfo = res.data.data
+            console.log(res.data)
+            console.log(dataInfo)
+            const bufferUrl = btoa(new Uint8Array(dataInfo).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+            this.url = 'data:image/png;base64,' + bufferUrl;//imgURL就是最后的图片base64数据
+          }
+
+
         })
         .catch((err) => {
           console.log(err, '--发生axios错误')
