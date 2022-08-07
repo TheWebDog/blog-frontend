@@ -27,7 +27,7 @@ export default {
         console.log(res.data)
         switch (res.data) {
           case '成功':
-            alert('留言成功')
+            alert('留言成功,请刷新页面')
             break
           case '失败':
             alert('留言出错')
@@ -35,6 +35,8 @@ export default {
           default:
             break
         }
+      }).then(() => {
+        state.finished = true
       })
       .catch((err) => {
         console.log(err)
@@ -56,6 +58,8 @@ export default {
       .then((res) => {
         console.log(res.data)
         alert(res.data)
+      }).then(() => {
+        state.finished = true
       })
       .catch((err) => {
         console.log(err)

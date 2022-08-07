@@ -127,12 +127,23 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl']),
+    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl','get_finished']),
   },
   methods: {
     ...mapActions(['action_getArticlePage', 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
     to_login () {
       this.$router.push('/login')
+    },
+    knowfinished () {
+      console.log('knowfinished')
+      if (this.get_finished()) {
+        this.$router.go(0)
+      } else {
+        var timeout = null
+        timeout = setTimeout(() => {
+          this.knowfinished()
+        }, 1000);
+      }
     },
     submit_comment () {
       console.log('submit_comment')
@@ -141,8 +152,8 @@ export default {
       var articleTitle = this.get_ArticlePage.title
       var userName = this.$cookies.get('name').name
       var userId = this.$cookies.get('userId')._id
-      this.action_submit_comment({ userComment, articleId, userName, userId,articleTitle })
-      // this.$router.go(0)
+      this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle })
+      this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {
       this.$prompt('回复', '留言', {
@@ -176,6 +187,7 @@ export default {
           message: '取消输入'
         });
       });
+      this.knowfinished()
     }
   },
   created () {
