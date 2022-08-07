@@ -139,8 +139,7 @@ export default {
       if (this.get_finished()) {
         this.$router.go(0)
       } else {
-        var timeout = null
-        timeout = setTimeout(() => {
+        setTimeout(() => {
           this.knowfinished()
         }, 1000);
       }
