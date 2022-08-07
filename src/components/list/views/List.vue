@@ -8,7 +8,7 @@
             <el-card class="list_li_div" shadow="hover">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
               <!-- el-image的bug喜加一 -->
-              <img  class="el_card_el_image" src="item.coverRequirePath" alt="图片又没了？">
+              <img  class="el_card_el_image" :src="item.coverRequirePath" alt="图片又没了？">
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
