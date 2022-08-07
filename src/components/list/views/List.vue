@@ -7,7 +7,7 @@
             v-scroll-reveal.reset>
             <el-card class="list_li_div" shadow="hover">
               <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image>
-              {{item.coverRequirePath}}
+              <!-- {{item.coverRequirePath}} -->
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
