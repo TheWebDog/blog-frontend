@@ -4,7 +4,7 @@
       <!-- <a :href="$axios.defaults.baseURL">a</a> -->
       <el-image
         style="width: 100%;"
-        :src="$axios.defaults.baseURL+'/page/getPic/homePage2.gif'"
+        :src="'../static/homePage2.gif'"
         fit="cover"
       ></el-image>
     </div>
@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     ...mapActions([]),
+    // :src="$axios.defaults.baseURL+'/page/getPic/homePage2.gif'"
     // :src="$axios.defaults.baseURL+'/page/getPic?picUrl=public\\homePage2.gif'"
     // http://localhost:4000/page/getPic?picUrl=public\homePage1.gif
     // http://localhost:4000/page/getPic?picUrl=public\homePage2.gif
@@ -29,7 +30,7 @@ export default {
   created () {
     // console.log(this)
     this.$axios
-      .get("https://blog-backend-nu.vercel.app/")
+      .get(this.$axios.defaults.baseURL)
       .then((res) => {
         console.log(res)
       })
