@@ -23,6 +23,23 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
+
+
+          var arr =state.articleList
+          for (let i = 0; i < arr.length; i++){
+            var coverRequirePath = arr[i].coverRequirePath
+            axios
+              .get(coverRequirePath)
+              .then((res) => {
+                state.articleList[i].coverRequirePath = res.data
+              })
+              .catch((err) => {
+               console.log(err)
+              })
+          }
+
+          
+
         })
         .catch((err) => {
           console.log(err)
