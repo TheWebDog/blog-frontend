@@ -10,7 +10,7 @@ export default {
       .then((res) => {
       // console.log(res.data)
         state.articleList = res.data
-
+        console.log('SET_INPUT_VALUE')
 
         var arr =state.articleList
         for (let i = 0; i < arr.length; i++){
@@ -40,7 +40,7 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
-
+          console.log('GET_ARTICLELIST')
 
           var arr =state.articleList
           for (let i = 0; i < arr.length; i++){
@@ -67,7 +67,7 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
-
+          console.log('else if')
 
           var arr =state.articleList
           for (let i = 0; i < arr.length; i++){
