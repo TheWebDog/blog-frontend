@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import { async } from 'q'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: "Article",
@@ -135,13 +136,14 @@ export default {
       this.$router.push('/login')
     },
     submit_comment () {
+      console.log('submit_comment')
       var userComment = this.theComment
       var articleId = this.get_ArticlePage._id
       var articleTitle = this.get_ArticlePage.title
       var userName = this.$cookies.get('name').name
       var userId = this.$cookies.get('userId')._id
       this.action_submit_comment({ userComment, articleId, userName, userId,articleTitle })
-      this.$router.go(0)
+      // this.$router.go(0)
     },
     replyTheComment (commentId, childrenUserName) {
       this.$prompt('回复', '留言', {
@@ -158,7 +160,7 @@ export default {
           var userName = this.$cookies.get('name').name
           var userId = this.$cookies.get('userId')._id
           this.action_submit_comment_comment({ commentId, userComment, userName, userId, })
-          this.$router.go(0)
+          // await this.$router.go(0)
           this.$message({
             type: 'success',
             message: '提交成功'
