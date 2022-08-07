@@ -5,9 +5,10 @@
         <ul class="list_ul">
           <li class="list_li" v-for="(item, index) in get_articleList" :key="index" @click="to_article(item._id)"
             v-scroll-reveal.reset>
+            {{item.coverRequirePath}}
+            <img :src="item.coverRequirePath" alt="图片又没了？">
             <el-card class="list_li_div" shadow="hover">
               <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image>
-              <!-- {{item.coverRequirePath}} -->
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
