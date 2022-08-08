@@ -12,7 +12,7 @@ export default {
       })
   },
   [REMOVE_COMMENT]: function (state, obj) {
-    var { id, ActiveIsFinish } = obj
+    var { id } = obj
     axios
       .post('/page/removeComment', { id })
       .then((res) => {
@@ -20,21 +20,23 @@ export default {
         return
       })
       .then(() => {
-        ActiveIsFinish()
+        var { thatStore } = obj
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)
       })
   },
   [REMOVE_CHILDREN]: function (state, userCommentandid) {
-    var { userComment, id, ActiveIsFinish } = userCommentandid
+    var { userComment, id } = userCommentandid
     axios
       .post('/page/removeChildren', { userComment, id })
       .then((res) => {
         console.log(res.data)
       })
       .then(() => {
-        ActiveIsFinish()
+        var { thatStore } = userCommentandid
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)

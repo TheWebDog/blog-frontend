@@ -12,16 +12,15 @@ export default {
       })
   },
   [REMOVE_DATA]: function (state, obj) {
-    var { id, ActiveIsFinish } = obj
+    var { id } = obj
     axios
       .post('/page/removeArticle', { id })
       .then((res) => {
         alert(res.data)
         return
       }).then(() => {
-        setTimeout(() => {
-          ActiveIsFinish()
-        }, 1000);
+        var { thatStore } = obj
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)

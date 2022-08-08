@@ -156,8 +156,9 @@ export default {
       var articleTitle = this.get_ArticlePage.title
       var userName = this.$cookies.get('name').name
       var userId = this.$cookies.get('userId')._id
-      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle,ActiveIsFinish })
+      // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      var thatStore = this.$store
+      this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatStore })
       this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {

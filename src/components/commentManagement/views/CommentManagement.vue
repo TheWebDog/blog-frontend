@@ -125,15 +125,17 @@ export default {
     handleCommentDelete (index, row) {
       // 删除数据
       var id = row._id
-      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      this.action_remove_comment({ id, ActiveIsFinish })
+      // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      var thatStore = this.$store
+      this.action_remove_comment({ id, thatStore })
       // this.$router.go(0)
       this.knowfinished()
     },
     handleCommentChildrenDelete (userComment, id) {
       // 删除数据
-      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      this.action_remove_children({ userComment, id, ActiveIsFinish })
+      // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      var thatStore = this.$store
+      this.action_remove_children({ userComment, id, thatStore })
       // this.$router.go(0)
       this.knowfinished()
     }

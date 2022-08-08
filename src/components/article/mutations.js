@@ -38,8 +38,8 @@ export default {
         return
       }).then(() => {
         // state.finished = true
-        var { ActiveIsFinish } = obj
-        ActiveIsFinish()
+        var { thatStore } = obj
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)
@@ -63,8 +63,8 @@ export default {
         alert(res.data)
       }).then(() => {
         // state.finished = true
-        var { ActiveIsFinish } = obj
-        ActiveIsFinish()
+        var { thatStore } = obj
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)

@@ -96,8 +96,9 @@ export default {
       }).then(({ value }) => {
         if (value) {
           var id = row._id
-          var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-          this.action_CHANGE_USERDATA({ id, value, ActiveIsFinish })
+          // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+          var thatStore = this.$store
+          this.action_CHANGE_USERDATA({ id, value, thatStore })
           // this.$router.go(0)
           this.knowfinished()
           this.$message({

@@ -22,7 +22,6 @@ export default {
       .then(() => {
         var { thatStore } = obj
         thatStore.commit('ActiveIsFinish')
-        // ActiveIsFinish()
       })
       .catch((err) => {
         console.log(err)
@@ -37,8 +36,8 @@ export default {
         return
       })
       .then(() => {
-        var { ActiveIsFinish } = idandvalue
-        ActiveIsFinish()
+        var { thatStore } = idandvalue
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)
