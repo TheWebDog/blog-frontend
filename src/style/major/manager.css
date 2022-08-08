@@ -38,3 +38,7 @@
   text-align: center;
   /* transition: all 0s ease-out !important; */
 }
+
+.el-aside{
+  overflow: visible !important;
+}

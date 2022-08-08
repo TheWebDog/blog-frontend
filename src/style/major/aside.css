@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   padding-top: 25px;
-  overflow: auto !important;
+  overflow: visible !important;
   min-height: 600px;
 }
 .about {
@@ -16,9 +16,9 @@
   position: relative;
   background-color: rgb(246, 246, 246);
 
-  /* 不知道为什么不生效 */
-  /* position: sticky; */
-  /* top: 10px; */
+  /* 不知道为什么不生效 因为el-aside组件设置了overflow */
+  position: sticky;
+  top: 10px;
 }
 .about_background_1 {
   width: 100%;

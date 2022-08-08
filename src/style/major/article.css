@@ -55,7 +55,12 @@
   box-sizing: border-box;
   margin-bottom: 10px;
   padding-bottom: 10px;
+  padding-top: 20px;
   border-bottom: 1px solid #e3e3e3e3;
+  position: sticky;
+  top: 0px;
+  background-color: #ffffffef;
+  z-index: 100;
 }
 .article_comment_writing_header,
 .article_comment_writing_body,
