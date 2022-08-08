@@ -6,7 +6,7 @@
         <el-image
           class="article_background_img"
           :src="get_picUrl"
-          fit="contain"
+          fit="cover"
         ></el-image>
         <h4 class="article_category">
           文章分类： <el-tag>{{ get_ArticlePage.category }}</el-tag>
