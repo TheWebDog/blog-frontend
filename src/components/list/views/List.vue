@@ -8,7 +8,8 @@
             <el-card class="list_li_div" shadow="hover">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
               <!-- el-image的bug喜加一 -->
-              <img  class="el_card_el_image" :src="item.coverRequirePath" alt="图片又没了？">
+              <img class="el_card_el_image" :src="item.coverRequirePath" alt="图片又没了？"
+                onerror="this.src='默认图片的url地址';this.οnerrοr=null">
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
@@ -41,6 +42,14 @@
 </template>
 
 <script>
+import $ from 'jquery'
+$(".el_card_el_image").one("error", function () {
+  $(".el_card_el_image").attr("src", "");
+  $(".el_card_el_image").attr("alt", "");//这样就不会出现断裂图片样式，以及文字
+  $(".el_card_el_image").css("background-color", "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.soogif.com%2FClkKoCEHhuyuRkINHFAvmTsrJjGfUMKV.gif_s400x0&refer=http%3A%2F%2Fimg.soogif.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662551488&t=8224a1465ccdb51ab9cc6c6653f4a872");//添加自定义的样式，根据需求随意
+
+});
+
 // import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 export default {

@@ -78,3 +78,6 @@
   position: absolute;
   height: 30px;
 }
+.el_card_el_image{
+  object-fit:cover;
+}
