@@ -76,28 +76,28 @@ export default {
   },
   methods: {
     ...mapActions(['action_getArticleManageData', 'action_REMOVE_DATA']),
-    knowfinished () {
-      // console.log('knowfinished')
-      var finished = this.$store.getters.getActiveFinish
-      console.log(finished)
-      if (finished) {
-        this.$store.commit('ActiveFinishReset')
-        setTimeout(() => {
-          this.$router.go(0)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          this.knowfinished()
-        }, 1000);
-      }
-    },
+    // knowfinished () {
+    //   // console.log('knowfinished')
+    //   var finished = this.$store.getters.getActiveFinish
+    //   console.log(finished)
+    //   if (finished) {
+    //     this.$store.commit('ActiveFinishReset')
+    //     setTimeout(() => {
+    //       this.$router.go(0)
+    //     }, 500);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.knowfinished()
+    //     }, 1000);
+    //   }
+    // },
     handleDelete (index, row) {
       // 删除数据
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var id = row._id
       var thatStore = this.$store
       this.action_REMOVE_DATA({ id, thatStore })
-      this.knowfinished()
+      // this.knowfinished()
     }
   },
   created () {

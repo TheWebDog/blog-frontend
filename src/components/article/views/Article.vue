@@ -26,7 +26,7 @@
       <div class="markdown-body" v-html="get_ArticlePage.html" />
       <h3 class="article_date_bottom">发布日期：{{ get_ArticlePage.date }}</h3>
     </div>
-    <div class="article_background">
+    <div class="article_background" v-if="$store.state.isRouterAlive">
       <div class="article_comment_header">留言</div>
       <div class="article_comment_writing">
         <div class="article_comment_writing_header">写下留言</div>
@@ -134,21 +134,21 @@ export default {
     to_login () {
       this.$router.push('/login')
     },
-    knowfinished () {
-      // console.log('knowfinished')
-      var finished = this.$store.getters.getActiveFinish
-      console.log(finished)
-      if (finished) {
-        this.$store.commit('ActiveFinishReset')
-        setTimeout(() => {
-          this.$router.go(0)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          this.knowfinished()
-        }, 1000);
-      }
-    },
+    // knowfinished () {
+    //   // console.log('knowfinished')
+    //   var finished = this.$store.getters.getActiveFinish
+    //   console.log(finished)
+    //   if (finished) {
+    //     this.$store.commit('ActiveFinishReset')
+    //     setTimeout(() => {
+    //       this.$router.go(0)
+    //     }, 500);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.knowfinished()
+    //     }, 1000);
+    //   }
+    // },
     submit_comment () {
       console.log('submit_comment')
       var userComment = this.theComment
@@ -159,7 +159,7 @@ export default {
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var thatStore = this.$store
       this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatStore })
-      this.knowfinished()
+      // this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {
       this.$prompt('回复', '留言', {
@@ -181,7 +181,7 @@ export default {
           //   type: 'success',
           //   message: '提交成功'
           // });
-          this.knowfinished()
+          // this.knowfinished()
         } else {
           this.$message({
             type: 'warning',

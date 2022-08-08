@@ -107,21 +107,21 @@ export default {
   },
   methods: {
     ...mapActions(['action_getCommentManageData', 'action_remove_comment', 'action_remove_children']),
-    knowfinished () {
-      // console.log('knowfinished')
-      var finished = this.$store.getters.getActiveFinish
-      console.log(finished)
-      if (finished) {
-        this.$store.commit('ActiveFinishReset')
-        setTimeout(() => {
-          this.$router.go(0)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          this.knowfinished()
-        }, 1000);
-      }
-    },
+    // knowfinished () {
+    //   // console.log('knowfinished')
+    //   var finished = this.$store.getters.getActiveFinish
+    //   console.log(finished)
+    //   if (finished) {
+    //     this.$store.commit('ActiveFinishReset')
+    //     setTimeout(() => {
+    //       this.$router.go(0)
+    //     }, 500);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.knowfinished()
+    //     }, 1000);
+    //   }
+    // },
     handleCommentDelete (index, row) {
       // 删除数据
       var id = row._id
@@ -129,7 +129,7 @@ export default {
       var thatStore = this.$store
       this.action_remove_comment({ id, thatStore })
       // this.$router.go(0)
-      this.knowfinished()
+      // this.knowfinished()
     },
     handleCommentChildrenDelete (userComment, id) {
       // 删除数据
@@ -137,7 +137,7 @@ export default {
       var thatStore = this.$store
       this.action_remove_children({ userComment, id, thatStore })
       // this.$router.go(0)
-      this.knowfinished()
+      // this.knowfinished()
     }
   },
   created () {

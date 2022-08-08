@@ -62,21 +62,21 @@ export default {
   },
   methods: {
     ...mapActions(['action_getUserManageData', 'action_REMOVE_USERDATA', 'action_CHANGE_USERDATA']),
-    knowfinished () {
-      // console.log('knowfinished')
-      var finished = this.$store.getters.getActiveFinish
-      console.log(finished)
-      if (finished) {
-        this.$store.commit('ActiveFinishReset')
-        setTimeout(() => {
-          this.$router.go(0)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          this.knowfinished()
-        }, 1000);
-      }
-    },
+    // knowfinished () {
+    //   // console.log('knowfinished')
+    //   var finished = this.$store.getters.getActiveFinish
+    //   console.log(finished)
+    //   if (finished) {
+    //     this.$store.commit('ActiveFinishReset')
+    //     setTimeout(() => {
+    //       this.$router.go(0)
+    //     }, 500);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.knowfinished()
+    //     }, 1000);
+    //   }
+    // },
     handleUserDelete (index, row) {
       // 删除数据
       var id = row._id
@@ -84,7 +84,7 @@ export default {
       var thatStore = this.$store
       this.action_REMOVE_USERDATA({ id,thatStore })
       // this.$router.go(0)
-      this.knowfinished()
+      // this.knowfinished()
     },
     handleUserChange (index, row) {
       // 修改数据
@@ -100,7 +100,7 @@ export default {
           var thatStore = this.$store
           this.action_CHANGE_USERDATA({ id, value, thatStore })
           // this.$router.go(0)
-          this.knowfinished()
+          // this.knowfinished()
           this.$message({
             type: 'success',
             message: '提交成功'
