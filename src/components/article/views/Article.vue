@@ -158,6 +158,7 @@ export default {
       var userId = this.$cookies.get('userId')._id
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var thatStore = this.$store
+      console.log('传入数据Data：',{ userComment, articleId, userName, userId, articleTitle, thatStore })
       this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatStore })
       this.knowfinished()
     },
