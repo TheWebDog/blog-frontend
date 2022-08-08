@@ -3,8 +3,8 @@ export default {
   action_querySearchAsync: function (context) {
     context.commit(GET_SERVER_CLASSIFY)
   },
-  action_uploadSectionFile: function (context,param) {
-    context.commit(UPLOAD_File,param)
+  action_uploadSectionFile: function (context,obj) {
+    context.commit(UPLOAD_File,obj)
   },
   action_PublishButton: function (context,data) {
     context.commit(SET_File, data)

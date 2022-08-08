@@ -31,7 +31,7 @@ export default {
     theData.append('pic', file.raw) // 封面
   },
   // 上传文章
-  [UPLOAD_File]: function (state) {
+  [UPLOAD_File]: function (state,obj) {
     var theData = state.uploadFromData
     axios
       .post('/page/submitPage', theData, {
@@ -55,6 +55,11 @@ export default {
         }
         // 清空上传的保存
         state.uploadFromData = new FormData()
+        return
+      })
+      .then(() => {
+        var { thatStore } = obj
+        thatStore.commit('increment')
       })
       .catch((err) => {
         console.log(err, '--发生axios错误')

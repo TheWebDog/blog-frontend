@@ -204,7 +204,8 @@ export default {
     },
     // 文件上传触发的函数 :http-request="uploadSectionFile"
     uploadSectionFile () {
-      this.action_uploadSectionFile()
+      var thatStore = this.$store
+      this.action_uploadSectionFile({ thatStore })
       // 清空临时的保存
       this.saveFromData = new FormData()
     },

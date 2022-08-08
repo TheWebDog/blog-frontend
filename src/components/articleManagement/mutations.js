@@ -18,7 +18,8 @@ export default {
       .then((res) => {
         alert(res.data)
         return
-      }).then(() => {
+      })
+      .then(() => {
         var { thatStore } = obj
         thatStore.commit('ActiveIsFinish')
       })

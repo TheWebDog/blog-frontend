@@ -32,7 +32,7 @@ export default {
     this.$axios
       .get(this.$axios.defaults.baseURL)
       .then((res) => {
-        console.log(res)
+        console.log(res.data)
       })
         .catch((err) => {
           console.log(err, '--错误')
