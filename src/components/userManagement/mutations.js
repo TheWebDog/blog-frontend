@@ -20,9 +20,9 @@ export default {
         return
       })
       .then(() => {
-        var { thatStore } = obj
+        var { thatCommit } = obj
         // thatStore.commit('ActiveIsFinish')
-        thatStore.commit('increment')
+        thatCommit('increment')
       })
       .catch((err) => {
         console.log(err)
@@ -37,9 +37,9 @@ export default {
         return
       })
       .then(() => {
-        var { thatStore } = idandvalue
+        var { thatCommit } = idandvalue
         // thatStore.commit('ActiveIsFinish')
-        thatStore.commit('increment')
+        thatCommit('increment')
       })
       .catch((err) => {
         console.log(err)

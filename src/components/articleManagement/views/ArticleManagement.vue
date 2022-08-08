@@ -95,8 +95,9 @@ export default {
       // 删除数据
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var id = row._id
-      var thatStore = this.$store
-      this.action_REMOVE_DATA({ id, thatStore })
+      // var thatStore = this.$store
+      var thatCommit = this.$store.commit
+      this.action_REMOVE_DATA({ id, thatCommit })
       // this.knowfinished()
     }
   },

@@ -126,16 +126,18 @@ export default {
       // 删除数据
       var id = row._id
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      var thatStore = this.$store
-      this.action_remove_comment({ id, thatStore })
+      // var thatStore = this.$store
+      var thatCommit = this.$store.commit
+      this.action_remove_comment({ id, thatCommit })
       // this.$router.go(0)
       // this.knowfinished()
     },
     handleCommentChildrenDelete (userComment, id) {
       // 删除数据
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      var thatStore = this.$store
-      this.action_remove_children({ userComment, id, thatStore })
+      // var thatStore = this.$store
+      var thatCommit = this.$store.commit
+      this.action_remove_children({ userComment, id, thatCommit })
       // this.$router.go(0)
       // this.knowfinished()
     }

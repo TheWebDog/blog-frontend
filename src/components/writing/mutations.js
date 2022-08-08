@@ -58,8 +58,8 @@ export default {
         return
       })
       .then(() => {
-        var { thatStore } = obj
-        thatStore.commit('increment')
+        var { thatCommit } = obj
+        thatCommit('increment')
       })
       .catch((err) => {
         console.log(err, '--发生axios错误')
