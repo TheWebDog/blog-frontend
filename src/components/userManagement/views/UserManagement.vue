@@ -80,8 +80,8 @@ export default {
     handleUserDelete (index, row) {
       // 删除数据
       var id = row._id
-      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      this.action_REMOVE_USERDATA({ id, ActiveIsFinish })
+      // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      this.action_REMOVE_USERDATA({ id })
       // this.$router.go(0)
       this.knowfinished()
     },
