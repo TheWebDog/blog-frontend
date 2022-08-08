@@ -20,7 +20,8 @@ export default {
         return
       })
       .then(() => {
-        // var { ActiveIsFinish } = obj
+        var { thatStore } = obj
+        thatStore.commit('ActiveIsFinish')
         // ActiveIsFinish()
       })
       .catch((err) => {

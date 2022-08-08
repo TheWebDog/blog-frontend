@@ -81,7 +81,8 @@ export default {
       // 删除数据
       var id = row._id
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      this.action_REMOVE_USERDATA({ id })
+      var thatStore = this.$store
+      this.action_REMOVE_USERDATA({ id,thatStore })
       // this.$router.go(0)
       this.knowfinished()
     },
