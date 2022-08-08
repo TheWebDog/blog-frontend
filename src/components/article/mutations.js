@@ -23,7 +23,6 @@ export default {
   [SUBMIT_COMMENT]: function (state, obj) {
     console.log('SUBMIT_COMMENT')
     console.log(obj)
-    var { thatCommit } = obj
     axios
       .post('/page/submitComment', obj)
       .then((res) => {
@@ -41,10 +40,8 @@ export default {
         return
       })
       .then(() => {
-        console.log("thatStore.commit('ActiveIsFinish')")
-        // state.finished = true
-        
-        thatCommit('ActiveIsFinish')
+        var { thatCommit } = obj
+        thatCommit('increment')
       })
       .catch((err) => {
         console.log(err)
@@ -67,9 +64,8 @@ export default {
         console.log(res.data)
         alert(res.data)
       }).then(() => {
-        // state.finished = true
-        var { thatStore } = obj
-        thatStore.commit('ActiveIsFinish')
+        var { thatCommit } = obj
+        thatCommit('increment')
       })
       .catch((err) => {
         console.log(err)

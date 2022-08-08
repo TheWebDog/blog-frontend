@@ -41,7 +41,7 @@
         >
         </el-input>
 
-        <div class="article_comment_writing_footer">
+        <div class="article_comment_writing_footer"  v-if="$store.state.isRouterAlive">
           <el-button type="success" v-if="!loginornot" @click="to_login"
             >登录</el-button
           >
@@ -134,21 +134,21 @@ export default {
     to_login () {
       this.$router.push('/login')
     },
-    knowfinished () {
-      // console.log('knowfinished')
-      var finished = this.$store.getters.getActiveFinish
-      console.log(finished)
-      if (finished) {
-        this.$store.commit('ActiveFinishReset')
-        setTimeout(() => {
-          this.$router.go(0)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          this.knowfinished()
-        }, 1000);
-      }
-    },
+    // knowfinished () {
+    //   // console.log('knowfinished')
+    //   var finished = this.$store.getters.getActiveFinish
+    //   console.log(finished)
+    //   if (finished) {
+    //     this.$store.commit('ActiveFinishReset')
+    //     setTimeout(() => {
+    //       this.$router.go(0)
+    //     }, 500);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.knowfinished()
+    //     }, 1000);
+    //   }
+    // },
     submit_comment () {
       // console.log('submit_comment')
       var userComment = this.theComment
@@ -160,7 +160,7 @@ export default {
       var thatCommit = this.$store.commit
       // console.log('传入数据Data：',{ userComment, articleId, userName, userId, articleTitle, thatStore })
       this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatCommit })
-      this.knowfinished()
+      // this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {
       this.$prompt('回复', '留言', {
@@ -176,13 +176,14 @@ export default {
           }
           var userName = this.$cookies.get('name').name
           var userId = this.$cookies.get('userId')._id
-          this.action_submit_comment_comment({ commentId, userComment, userName, userId, })
+          var thatCommit = this.$store.commit
+          this.action_submit_comment_comment({ commentId, userComment, userName, userId, thatCommit})
           // await this.$router.go(0)
           // this.$message({
           //   type: 'success',
           //   message: '提交成功'
           // });
-          this.knowfinished()
+          // this.knowfinished()
         } else {
           this.$message({
             type: 'warning',
