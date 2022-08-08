@@ -11,8 +11,8 @@ import 'mavon-editor/dist/css/index.css'
 import axios from "axios"
 
 // 全局配置axios的请求根路径
-axios.defaults.baseURL = "http://localhost:3000"
-// axios.defaults.baseURL = "https://blog-backend-nyu.vercel.app/"
+// axios.defaults.baseURL = "http://localhost:3000"
+axios.defaults.baseURL = "https://blog-backend-nyu.vercel.app/"
 
 // 将axios挂载到Vue上
 Vue.prototype.$axios = axios
