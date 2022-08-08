@@ -12,7 +12,7 @@ export default {
       })
   },
   [REMOVE_USERDATA]: function (state, obj) {
-    var { id, ActiveIsFinish } = obj
+    var { id } = obj
     axios
       .post('/user/removeUser', { id })
       .then((res) => {
@@ -20,14 +20,15 @@ export default {
         return
       })
       .then(() => {
-        ActiveIsFinish()
+        // var { ActiveIsFinish } = obj
+        // ActiveIsFinish()
       })
       .catch((err) => {
         console.log(err)
       })
   },
   [CHANGE_USERDATA]: function (state, idandvalue) {
-    var { id, value, ActiveIsFinish } = idandvalue
+    var { id, value } = idandvalue
     axios
       .post('/user/changeUser', { id, value })
       .then((res) => {
@@ -35,6 +36,7 @@ export default {
         return
       })
       .then(() => {
+        var { ActiveIsFinish } = idandvalue
         ActiveIsFinish()
       })
       .catch((err) => {

@@ -86,7 +86,7 @@ export default {
       this.knowfinished()
     },
     handleUserChange (index, row) {
-      // 删除数据
+      // 修改数据
       this.$prompt('请输入数字', '更改权限', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
