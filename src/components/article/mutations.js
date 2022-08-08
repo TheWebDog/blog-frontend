@@ -39,8 +39,7 @@ export default {
       }).then(() => {
         // state.finished = true
         var { thatStore } = obj
-        // thatStore.commit('ActiveIsFinish')
-        thatStore.commit('increment')
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)
@@ -65,8 +64,7 @@ export default {
       }).then(() => {
         // state.finished = true
         var { thatStore } = obj
-        // thatStore.commit('ActiveIsFinish')
-        thatStore.commit('increment')
+        thatStore.commit('ActiveIsFinish')
       })
       .catch((err) => {
         console.log(err)
