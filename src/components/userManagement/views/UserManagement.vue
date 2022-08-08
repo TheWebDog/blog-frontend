@@ -58,13 +58,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_UserManageData', 'getActiveFinish']),
+    ...mapGetters(['get_UserManageData']),
   },
   methods: {
     ...mapActions(['action_getUserManageData', 'action_REMOVE_USERDATA', 'action_CHANGE_USERDATA']),
     knowfinished () {
       // console.log('knowfinished')
-      var finished = this.getActiveFinish
+      var finished = this.$store.getters.getActiveFinish
       console.log(finished)
       if (finished) {
         this.$store.commit('ActiveFinishReset')

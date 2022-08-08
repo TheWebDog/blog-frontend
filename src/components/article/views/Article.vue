@@ -127,7 +127,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl','getActiveFinish']),
+    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl']),
   },
   methods: {
     ...mapActions(['action_getArticlePage', 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
@@ -136,7 +136,7 @@ export default {
     },
     knowfinished () {
       // console.log('knowfinished')
-      var finished = this.getActiveFinish
+      var finished = this.$store.getters.getActiveFinish
       console.log(finished)
       if (finished) {
         this.$store.commit('ActiveFinishReset')

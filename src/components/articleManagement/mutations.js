@@ -19,7 +19,9 @@ export default {
         alert(res.data)
         return
       }).then(() => {
-        ActiveIsFinish()
+        setTimeout(() => {
+          ActiveIsFinish()
+        }, 1000);
       })
       .catch((err) => {
         console.log(err)

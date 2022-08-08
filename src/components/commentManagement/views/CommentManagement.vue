@@ -103,13 +103,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_CommentManageData', 'getActiveFinish']),
+    ...mapGetters(['get_CommentManageData']),
   },
   methods: {
     ...mapActions(['action_getCommentManageData', 'action_remove_comment', 'action_remove_children']),
     knowfinished () {
       // console.log('knowfinished')
-      var finished = this.getActiveFinish
+      var finished = this.$store.getters.getActiveFinish
       console.log(finished)
       if (finished) {
         this.$store.commit('ActiveFinishReset')

@@ -72,13 +72,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_ArticleManageData', 'getActiveFinish']),
+    ...mapGetters(['get_ArticleManageData']),
   },
   methods: {
     ...mapActions(['action_getArticleManageData', 'action_REMOVE_DATA']),
     knowfinished () {
       // console.log('knowfinished')
-      var finished = this.getActiveFinish
+      var finished = this.$store.getters.getActiveFinish
       console.log(finished)
       if (finished) {
         this.$store.commit('ActiveFinishReset')
