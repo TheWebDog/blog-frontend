@@ -3,7 +3,7 @@ import { GET_USERMANAGEDATA, REMOVE_USERDATA, CHANGE_USERDATA } from './type'
 export default {
   [GET_USERMANAGEDATA]: function (state) {
     axios
-      .post('/user/getUserList', {})
+      .get('/user/getUserList', {})
       .then((res) => {
         state.UserManageData = res.data
       })
