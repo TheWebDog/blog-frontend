@@ -8,7 +8,7 @@ export default {
   get_picUrl: function (state) {
     return state.picUrl
   },
-  get_finished: function (state) {
-    return state.finished
-  },
+  // get_finished: function (state) {
+  //   return state.finished
+  // },
 }

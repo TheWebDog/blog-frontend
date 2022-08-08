@@ -127,7 +127,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl','get_finished']),
+    ...mapGetters(['get_ArticlePage', 'get_ArticleComment','get_picUrl','getActiveFinish']),
   },
   methods: {
     ...mapActions(['action_getArticlePage', 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
@@ -135,10 +135,14 @@ export default {
       this.$router.push('/login')
     },
     knowfinished () {
-      console.log('knowfinished')
-      var finished =this.get_finished
+      // console.log('knowfinished')
+      var finished = this.getActiveFinish
+      console.log(finished)
       if (finished) {
-        this.$router.go(0)
+        this.$store.commit('ActiveFinishReset')
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 500);
       } else {
         setTimeout(() => {
           this.knowfinished()
@@ -152,7 +156,8 @@ export default {
       var articleTitle = this.get_ArticlePage.title
       var userName = this.$cookies.get('name').name
       var userId = this.$cookies.get('userId')._id
-      this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle })
+      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle,ActiveIsFinish })
       this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {
@@ -171,10 +176,11 @@ export default {
           var userId = this.$cookies.get('userId')._id
           this.action_submit_comment_comment({ commentId, userComment, userName, userId, })
           // await this.$router.go(0)
-          this.$message({
-            type: 'success',
-            message: '提交成功'
-          });
+          // this.$message({
+          //   type: 'success',
+          //   message: '提交成功'
+          // });
+          this.knowfinished()
         } else {
           this.$message({
             type: 'warning',
@@ -187,7 +193,6 @@ export default {
           message: '取消输入'
         });
       });
-      this.knowfinished()
     }
   },
   created () {

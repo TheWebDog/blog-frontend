@@ -40,7 +40,7 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
-          console.log('GET_ARTICLELIST')
+          // console.log('GET_ARTICLELIST')
 
           var arr =state.articleList
           for (let i = 0; i < arr.length; i++){

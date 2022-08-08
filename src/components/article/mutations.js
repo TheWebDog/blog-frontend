@@ -36,7 +36,9 @@ export default {
             break
         }
       }).then(() => {
-        state.finished = true
+        // state.finished = true
+        var { ActiveIsFinish } = obj
+        ActiveIsFinish()
       })
       .catch((err) => {
         console.log(err)
@@ -59,7 +61,9 @@ export default {
         console.log(res.data)
         alert(res.data)
       }).then(() => {
-        state.finished = true
+        // state.finished = true
+        var { ActiveIsFinish } = obj
+        ActiveIsFinish()
       })
       .catch((err) => {
         console.log(err)
