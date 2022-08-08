@@ -35,6 +35,7 @@ export default {
           default:
             break
         }
+        return
       }).then(() => {
         // state.finished = true
         var { ActiveIsFinish } = obj
