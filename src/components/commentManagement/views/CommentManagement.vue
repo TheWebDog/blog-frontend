@@ -1,19 +1,14 @@
 <template>
   <div class="CommentManage_div">
-    <el-table
-      class="CommentManage_el_table"
-      :data="
-        get_CommentManageData.filter(
-          (data) =>
-            !comment_search ||
-            data.userComment
-              .toLowerCase()
-              .includes(comment_search.toLowerCase())
-        )
-      "
-      stripe
-      style="width: 600px; min-width: 660px"
-    >
+    <el-table class="CommentManage_el_table" :data="
+      get_CommentManageData.filter(
+        (data) =>
+          !comment_search ||
+          data.userComment
+            .toLowerCase()
+            .includes(comment_search.toLowerCase())
+      )
+    " stripe style="width: 600px; min-width: 660px">
       <el-table-column type="expand" width="60" label="展开">
         <template slot-scope="props">
           <div class="CommentManage_template_div_el_form">
@@ -32,12 +27,8 @@
               <br />
               <el-form-item label="子评论：">
                 <ul class="CommentManage_childrenComment_ul">
-                  <li
-                    class="CommentManage_childrenComment_li"
-                    v-for="(childrenItem, childrenIndex) in props.row
-                      .childrenComment"
-                    :key="childrenIndex"
-                  >
+                  <li class="CommentManage_childrenComment_li" v-for="(childrenItem, childrenIndex) in props.row
+                  .childrenComment" :key="childrenIndex">
                     <div class="CommentManage_childrenComment">
                       <div class="CommentManage_childrenComment_container">
                         <div>用户名:</div>
@@ -52,18 +43,12 @@
                         </div>
                       </div>
                       <div class="CommentManage_childrenComment_container">
-                        <el-link
-                          :underline="false"
-                          class="children_delete"
-                          icon="el-icon-delete"
-                          @click="
-                            handleCommentChildrenDelete(
-                              childrenItem.userComment,
-                              props.row._id
-                            )
-                          "
-                          >删除</el-link
-                        >
+                        <el-link :underline="false" class="children_delete" icon="el-icon-delete" @click="
+                          handleCommentChildrenDelete(
+                            childrenItem.userComment,
+                            props.row._id
+                          )
+                        ">删除</el-link>
                       </div>
                     </div>
                   </li>
@@ -89,20 +74,10 @@
 
       <el-table-column label="操作" width="180">
         <template slot="header">
-          <input
-            class="articleManage_search"
-            type="text"
-            placeholder="输入关键字搜索"
-            v-model="comment_search"
-          />
+          <input class="articleManage_search" type="text" placeholder="输入关键字搜索" v-model="comment_search" />
         </template>
         <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleCommentDelete(scope.$index, scope.row)"
-            >删除</el-button
-          >
+          <el-button size="mini" type="danger" @click="handleCommentDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -128,19 +103,39 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_CommentManageData']),
+    ...mapGetters(['get_CommentManageData', 'getActiveFinish']),
   },
   methods: {
     ...mapActions(['action_getCommentManageData', 'action_remove_comment', 'action_remove_children']),
+    knowfinished () {
+      // console.log('knowfinished')
+      var finished = this.getActiveFinish
+      console.log(finished)
+      if (finished) {
+        this.$store.commit('ActiveFinishReset')
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 500);
+      } else {
+        setTimeout(() => {
+          this.knowfinished()
+        }, 1000);
+      }
+    },
     handleCommentDelete (index, row) {
       // 删除数据
-      this.action_remove_comment(row._id)
-      this.$router.go(0)
+      var id = row._id
+      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      this.action_remove_comment({ id, ActiveIsFinish })
+      // this.$router.go(0)
+      this.knowfinished()
     },
     handleCommentChildrenDelete (userComment, id) {
       // 删除数据
-      this.action_remove_children({ userComment, id })
-      this.$router.go(0)
+      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      this.action_remove_children({ userComment, id, ActiveIsFinish })
+      // this.$router.go(0)
+      this.knowfinished()
     }
   },
   created () {
@@ -154,32 +149,31 @@ export default {
   margin: auto;
   margin-bottom: 20px;
 }
+
 .CommentManage_template_div_el_form {
   padding: 5px 20px;
 }
-.CommentManage_template_div_el_form > form > div {
+
+.CommentManage_template_div_el_form>form>div {
   margin: 0 !important;
 }
-.CommentManage_el_table > div > table > thead > tr > th {
+
+.CommentManage_el_table>div>table>thead>tr>th {
   border-left: 1px solid #e3e3e3;
 }
-.children_delete > i,
-.children_delete > span {
+
+.children_delete>i,
+.children_delete>span {
   /* font-weight: 900; */
   color: #be002f;
 }
+
 .children_delete:hover {
   font-weight: 900;
   /* color: #be002f; */
 }
 
-.CommentManage_el_table
-  > .el-table__body-wrapper
-  > table
-  > tbody
-  > tr
-  > .el-table_1_column_3
-  > div {
+.CommentManage_el_table>.el-table__body-wrapper>table>tbody>tr>.el-table_1_column_3>div {
   /* background-color: black !important; */
   /* 文本溢出 显示为省略号 */
   display: -webkit-box;
@@ -192,19 +186,23 @@ export default {
   margin-top: 10px;
   list-style: none;
 }
+
 .CommentManage_childrenComment_li {
   border-bottom: 1px solid #e3e3e3;
   margin-bottom: 10px;
 }
+
 .CommentManage_childrenComment_container {
   display: flex;
 }
-.CommentManage_childrenComment_container > div {
+
+.CommentManage_childrenComment_container>div {
   font-size: 16px;
   height: 20px;
   line-height: 20px;
 }
-.CommentManage_childrenComment_container > .el-link {
+
+.CommentManage_childrenComment_container>.el-link {
   font-size: 16px;
   height: 20px;
   line-height: 20px;

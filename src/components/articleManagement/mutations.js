@@ -11,14 +11,18 @@ export default {
         console.log(err)
       })
   },
-  [REMOVE_DATA]: function (state, id) {
+  [REMOVE_DATA]: function (state, obj) {
+    var { id, ActiveIsFinish } = obj
     axios
-    .post('/page/removeArticle', { id })
-    .then((res) => {
-      alert(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .post('/page/removeArticle', { id })
+      .then((res) => {
+        alert(res.data)
+        return
+      }).then(() => {
+        ActiveIsFinish()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }

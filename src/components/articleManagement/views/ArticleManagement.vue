@@ -1,17 +1,12 @@
 <template>
   <div class="articleManage_div">
-    <el-table
-      class="articleManage_el_table"
-      :data="
-        get_ArticleManageData.filter(
-          (data) =>
-            !table_search ||
-            data.title.toLowerCase().includes(table_search.toLowerCase())
-        )
-      "
-      stripe
-      style="width: 600px; min-width: 660px"
-    >
+    <el-table class="articleManage_el_table" :data="
+      get_ArticleManageData.filter(
+        (data) =>
+          !table_search ||
+          data.title.toLowerCase().includes(table_search.toLowerCase())
+      )
+    " stripe style="width: 600px; min-width: 660px">
       <el-table-column type="expand" width="60" label="展开">
         <template slot-scope="props">
           <div class="articleManage_template_div_el_form">
@@ -45,19 +40,10 @@
 
       <el-table-column label="操作" width="180">
         <template slot="header">
-          <input
-            class="articleManage_search"
-            type="text"
-            placeholder="输入关键字搜索"
-            v-model="table_search"
-          />
+          <input class="articleManage_search" type="text" placeholder="输入关键字搜索" v-model="table_search" />
         </template>
         <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)"
-          >
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">
             删除
           </el-button>
         </template>
@@ -86,14 +72,31 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_ArticleManageData']),
+    ...mapGetters(['get_ArticleManageData', 'getActiveFinish']),
   },
   methods: {
     ...mapActions(['action_getArticleManageData', 'action_REMOVE_DATA']),
+    knowfinished () {
+      // console.log('knowfinished')
+      var finished = this.getActiveFinish
+      console.log(finished)
+      if (finished) {
+        this.$store.commit('ActiveFinishReset')
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 500);
+      } else {
+        setTimeout(() => {
+          this.knowfinished()
+        }, 1000);
+      }
+    },
     handleDelete (index, row) {
       // 删除数据
-      this.action_REMOVE_DATA(row._id)
-      this.$router.go(0)
+      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      var id = row._id
+      this.action_REMOVE_DATA({ id, ActiveIsFinish })
+      this.knowfinished()
     }
   },
   created () {
@@ -107,13 +110,8 @@ export default {
   margin: auto;
   margin-bottom: 20px;
 }
-.articleManage_el_table
-  > .el-table__body-wrapper
-  > table
-  > tbody
-  > tr
-  > .el-table_1_column_3
-  > div {
+
+.articleManage_el_table>.el-table__body-wrapper>table>tbody>tr>.el-table_1_column_3>div {
   /* background-color: black !important; */
   /* 文本溢出 显示为省略号 */
   display: -webkit-box;
@@ -128,12 +126,15 @@ export default {
 .articleManage_template_div_el_form {
   padding: 5px 20px;
 }
-.articleManage_template_div_el_form > form > div {
+
+.articleManage_template_div_el_form>form>div {
   margin: 0 !important;
 }
-.articleManage_el_table > div > table > thead > tr > th {
+
+.articleManage_el_table>div>table>thead>tr>th {
   border-left: 1px solid #e3e3e3;
 }
+
 .articleManage_search {
   width: 90%;
   font-size: 12px;

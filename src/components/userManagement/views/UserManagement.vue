@@ -1,17 +1,12 @@
 <template>
   <div class="userManage_div">
-    <el-table
-      class="userManage_el_table"
-      :data="
-        get_UserManageData.filter(
-          (data) =>
-            !user_search ||
-            data.name.toLowerCase().includes(user_search.toLowerCase())
-        )
-      "
-      stripe
-      style="width: 670px"
-    >
+    <el-table class="userManage_el_table" :data="
+      get_UserManageData.filter(
+        (data) =>
+          !user_search ||
+          data.name.toLowerCase().includes(user_search.toLowerCase())
+      )
+    " stripe style="width: 670px">
       <el-table-column sortable prop="date" label="日期" width="150">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
@@ -22,40 +17,19 @@
       <el-table-column prop="name" label="用户名" width="120">
       </el-table-column>
 
-      <el-table-column
-        prop="password"
-        label="哈希密码"
-        width="120"
-      ></el-table-column>
+      <el-table-column prop="password" label="哈希密码" width="120"></el-table-column>
 
-      <el-table-column
-        prop="power"
-        label="权限等级"
-        width="100"
-      ></el-table-column>
+      <el-table-column prop="power" label="权限等级" width="100"></el-table-column>
 
       <el-table-column label="操作" width="180">
         <template slot="header">
-          <input
-            class="userManage_search"
-            type="text"
-            placeholder="输入关键字搜索"
-            v-model="user_search"
-          />
+          <input class="userManage_search" type="text" placeholder="输入关键字搜索" v-model="user_search" />
         </template>
         <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="primary"
-            @click="handleUserChange(scope.$index, scope.row)"
-          >
+          <el-button size="mini" type="primary" @click="handleUserChange(scope.$index, scope.row)">
             修改
           </el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleUserDelete(scope.$index, scope.row)"
-          >
+          <el-button size="mini" type="danger" @click="handleUserDelete(scope.$index, scope.row)">
             删除
           </el-button>
         </template>
@@ -84,14 +58,32 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_UserManageData']),
+    ...mapGetters(['get_UserManageData', 'getActiveFinish']),
   },
   methods: {
     ...mapActions(['action_getUserManageData', 'action_REMOVE_USERDATA', 'action_CHANGE_USERDATA']),
+    knowfinished () {
+      // console.log('knowfinished')
+      var finished = this.getActiveFinish
+      console.log(finished)
+      if (finished) {
+        this.$store.commit('ActiveFinishReset')
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 500);
+      } else {
+        setTimeout(() => {
+          this.knowfinished()
+        }, 1000);
+      }
+    },
     handleUserDelete (index, row) {
       // 删除数据
-      this.action_REMOVE_USERDATA(row._id)
-      this.$router.go(0)
+      var id = row._id
+      var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+      this.action_REMOVE_USERDATA({ id, ActiveIsFinish })
+      // this.$router.go(0)
+      this.knowfinished()
     },
     handleUserChange (index, row) {
       // 删除数据
@@ -103,8 +95,10 @@ export default {
       }).then(({ value }) => {
         if (value) {
           var id = row._id
-          this.action_CHANGE_USERDATA({ id, value })
-          this.$router.go(0)
+          var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
+          this.action_CHANGE_USERDATA({ id, value, ActiveIsFinish })
+          // this.$router.go(0)
+          this.knowfinished()
           this.$message({
             type: 'success',
             message: '提交成功'
@@ -144,15 +138,19 @@ export default {
   margin: auto;
   margin-bottom: 20px;
 }
+
 .userManage_template_div_el_form {
   padding: 5px 20px;
 }
-.userManage_template_div_el_form > form > div {
+
+.userManage_template_div_el_form>form>div {
   margin: 0 !important;
 }
-.userManage_el_table > div > table > thead > tr > th {
+
+.userManage_el_table>div>table>thead>tr>th {
   border-left: 1px solid #e3e3e3;
 }
+
 .userManage_search {
   width: 90%;
   font-size: 12px;

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_COMMENTMANAGEDATA, REMOVE_COMMENT,REMOVE_CHILDREN } from './type'
+import { GET_COMMENTMANAGEDATA, REMOVE_COMMENT, REMOVE_CHILDREN } from './type'
 export default {
   [GET_COMMENTMANAGEDATA]: function (state) {
     axios
@@ -11,25 +11,33 @@ export default {
         console.log(err)
       })
   },
-  [REMOVE_COMMENT]: function (state, id) {
+  [REMOVE_COMMENT]: function (state, obj) {
+    var { id, ActiveIsFinish } = obj
     axios
-    .post('/page/removeComment', { id })
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .post('/page/removeComment', { id })
+      .then((res) => {
+        alert(res.data)
+        return
+      })
+      .then(() => {
+        ActiveIsFinish()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
   [REMOVE_CHILDREN]: function (state, userCommentandid) {
-    var {userComment,id} = userCommentandid
+    var { userComment, id, ActiveIsFinish } = userCommentandid
     axios
-    .post('/page/removeChildren', { userComment ,id})
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .post('/page/removeChildren', { userComment, id })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .then(() => {
+        ActiveIsFinish()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }
