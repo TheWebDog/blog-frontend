@@ -21,6 +21,7 @@ export default {
       })
   },
   [SUBMIT_COMMENT]: function (state, obj) {
+    console.log('SUBMIT_COMMENT')
     axios
       .post('/page/submitComment', obj)
       .then((res) => {
@@ -37,6 +38,7 @@ export default {
         }
         return
       }).then(() => {
+        console.log("thatStore.commit('ActiveIsFinish')")
         // state.finished = true
         var { thatStore } = obj
         thatStore.commit('ActiveIsFinish')
