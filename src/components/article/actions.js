@@ -1,5 +1,8 @@
-import { GET_ARTICLEPAGE ,SUBMIT_COMMENT ,GET_COMMENT,SUBMIT_COMMENT_COMMENT} from './type'
+import { CLEAR_ARTICLE, GET_ARTICLEPAGE ,SUBMIT_COMMENT ,GET_COMMENT,SUBMIT_COMMENT_COMMENT} from './type'
 export default {
+  action_clearArticle: function (context) {
+    context.commit(CLEAR_ARTICLE)
+  },
   action_getArticlePage: function (context,id) {
     context.commit(GET_ARTICLEPAGE,{id})
   },

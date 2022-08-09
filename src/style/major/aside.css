@@ -1,5 +1,9 @@
 .aside_el_aside{
+  height: 100%;
   padding: 0px 30px 0px 0px;
+  /* position: sticky !important; */
+  z-index: 3;
+  top: 0;
 }
 .aside_div {
   box-sizing: border-box;
@@ -15,10 +19,10 @@
   height: 400px;
   position: relative;
   background-color: rgb(246, 246, 246);
-
+  margin-bottom: 20px;
   /* 不知道为什么不生效 因为el-aside组件设置了overflow */
   position: sticky;
-  top: 10px;
+  top: 20px;
 }
 .about_background_1 {
   width: 100%;
@@ -137,3 +141,60 @@
   height: 50px;
   cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+.Aside_btn{
+  position: fixed;
+  right: -20px;
+  top: 300px;
+}
+.Aside_btn:hover{
+  right: -10px;
+}
+/* .Aside_small_width_div{
+} */
+.aside_el_drawer > div > div {
+  min-width: 300px;
+  max-width: 300px;
+  overflow: overlay;
+}
+.el-drawer__body::-webkit-scrollbar {
+  width: 0;
+}
+.aside_el_drawer > div > div >section{
+  margin-top: -100px;
+}
+
+
+.markdown-mdCatalog{
+  padding: 20px 20px;
+  position: sticky;
+  top: 20px;
+  min-height: 400px;
+  background-color: #ffffff;
+}
+.markdown-mdCatalog>h3{
+  font-size: 20px;
+  text-align: center;
+  color: lightslategray;
+}
+.markdown-mdCatalog a{
+  text-decoration:none;
+  color: lightseagreen;
+}
+.markdown-mdCatalog ul{
+  list-style: none;
+  padding: 10px;
+}
+.markdown-mdCatalog li{
+  margin-bottom: 5px;
+}
+

@@ -108,8 +108,9 @@ export default {
       category: "", // 文章分类
       synopsis: '', // 文章简介
       fileList: [], // 图片暂存 没有它就不显示缩略图
-      md: "", // 文章内容 markdown部分
+      md: "@[toc](目录)\n\n、@#￥%……&*目录结构分割@#￥%……&*、\n\n", // 文章内容 markdown部分
       html: "", // markdown解析成html
+      mdContent:'', // 文章目录
 
       saveFromData: new FormData(), // 封面图片临时保存 保存草稿 若发布 则清空
       mdPic: new Map(), // md文章临时图片地址
@@ -183,7 +184,14 @@ export default {
     // md文章展示
     change (value, render) {
       this.mdValue = value;
-      this.html = render;  // render 为 markdown 解析后的结果[html]
+      // render 为 markdown 解析后的结果[html]
+      var articleFilter = render.split(
+        "<p>、@#￥%……&amp;<em>目录结构分割@#￥%……&amp;</em>、</p>"
+      );
+      // 目录结构
+      this.mdCatalog = articleFilter[0];
+      // 正文结构
+      this.html = articleFilter[1];
     },
 
     //封面图片有关------------------------------------------------------------
@@ -219,12 +227,13 @@ export default {
         theSynopsis = this.synopsis,
         themd = this.md,
         thehtml = this.html,
+        theCatalog = this.mdCatalog,
         themdPic = [];
       this.mdPic.forEach((item) => {
         themdPic.push(item)
       })
       if (this.get_uploadFromData.get('pic') && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
-        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic });
+        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic ,theCatalog });
         this.$refs.upload.submit();// submit用于触发 uploadSectionFile
       } else {
         this.$message.error('需要将标题、分类、简介和封面图片都填充完整');

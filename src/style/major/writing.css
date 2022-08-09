@@ -38,6 +38,9 @@
   height: 75px;
   margin-bottom: 15px;
 }
+.writing_synopsis>textarea{
+  overflow: overlay;
+}
 .writing_synopsis>textarea::-webkit-scrollbar {
   /*滚动条整体样式*/
   width: 10px; /*高宽分别对应横竖滚动条的尺寸*/

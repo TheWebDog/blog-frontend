@@ -23,6 +23,7 @@
         href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css"
         rel="stylesheet"
       /> -->
+      
       <div class="markdown-body" v-html="get_ArticlePage.html" />
       <h3 class="article_date_bottom">发布日期：{{ get_ArticlePage.date }}</h3>
     </div>
@@ -47,11 +48,14 @@ export default {
     ...mapGetters(['get_ArticlePage','get_picUrl']),
   },
   methods: {
-    ...mapActions(['action_getArticlePage']),
+    ...mapActions(['action_getArticlePage','action_clearArticle']),
   },
   created () {
     this.action_getArticlePage(this.id)
   },
+  beforeDestroy () {
+    this.action_clearArticle()
+  }
 }
 </script>
 

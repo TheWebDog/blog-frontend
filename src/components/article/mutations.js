@@ -1,6 +1,9 @@
 import axios from 'axios'
-import { GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
+import { CLEAR_ARTICLE, GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
 export default {
+  [CLEAR_ARTICLE]: function (state) {
+    state.article = ''
+  },
   [GET_ARTICLEPAGE]: function (state, id) {
     axios
       .post('/page/getArticlePage', id)

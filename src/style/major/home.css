@@ -15,6 +15,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0);
   /* 窄屏侧边导航栏影响padding */
   padding: 0px !important;
+  overflow: overlay;
 }
 
 
@@ -72,31 +73,4 @@ body::-webkit-scrollbar-track {
   box-sizing: border-box;
   margin: 5px auto;
   padding: 0px 10px;
-}
-
-/* .Aside_small_width_div{
-} */
-.aside_el_drawer > div > div {
-  min-width: 300px;
-  max-width: 300px;
-}
-.el-drawer__body::-webkit-scrollbar {
-  width: 0;
-}
-.aside_el_drawer > div > div >section{
-  margin-top: -100px;
-}
-.Aside_btn{
-  position: fixed;
-  right: -20px;
-  top: 300px;
-}
-.Aside_btn:hover{
-  right: -10px;
-}
-
-.aside_el_aside{
-  position: sticky !important;
-  z-index: 3;
-  top: 0;
 }
