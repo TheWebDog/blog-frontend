@@ -29,7 +29,8 @@ export default {
         // console.log(res.data)
         switch (res.data) {
           case '成功':
-            alert('留言成功')
+            // alert('留言成功')
+            console.log('留言成功')
             break
           case '失败':
             alert('留言出错')

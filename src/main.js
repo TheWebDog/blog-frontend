@@ -10,46 +10,54 @@ import 'mavon-editor/dist/css/index.css'
 
 import axios from "axios"
 
+
+// 全局配置axios的请求根路径
+// axios.defaults.baseURL = "http://localhost:3000"
+axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
+
 // 按需导入 Loading 组件
 import { Loading } from 'element-ui'
 
 // 配置请求拦截器
+let reqNum = 0
 let loadingInstance = null
 axios.interceptors.request.use(config => {
-  // 开启 loading 效果
-  loadingInstance = Loading.service({ fullscreen: true })
-
+  // 判断请求是否是 不需要loading的接口，如果不是，加载 LoadingBar
+  let url = config.url;
+  if (url.split('/').pop() !== axios.defaults.baseURL) {
+    // 开启 loading 效果
+    loadingInstance = Loading.service({ fullscreen: true })
+    reqNum++
+  }
   // 固定写法
   return config
 })
 
 // 配置响应拦截器
 axios.interceptors.response.use(response => {
-  // 关闭 loading 效果
-  loadingInstance.close()
-
+  reqNum--
+  if (reqNum <= 0) {
+    // 关闭 loading 效果
+    loadingInstance.close()
+  }
   return response
 })
-
-// 全局配置axios的请求根路径
-// axios.defaults.baseURL = "http://localhost:3000"
-axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
 
 // 将axios挂载到Vue上
 Vue.prototype.$axios = axios
 // 今后在每个.vue组件中要发起请求,直接调用 this.$axios.xxx
 
 import VueScrollReveal from 'vue-scroll-reveal';
-Vue.use(VueScrollReveal,{
-class: 'v-scroll-reveal',  
-duration: 800,
-scale: 1,
-distance: '120px',
-reset:true,
-mobile: true,
-useDelay: 'always',
-origin:'left',
-delay: 80
+Vue.use(VueScrollReveal, {
+  class: 'v-scroll-reveal',
+  duration: 800,
+  scale: 1,
+  distance: '120px',
+  reset: true,
+  mobile: true,
+  useDelay: 'always',
+  origin: 'left',
+  delay: 80
 });
 
 
@@ -72,8 +80,8 @@ Vue.use(mavonEditor) // markdown  挂在到全局
 Vue.config.productionTip = false
 
 router.afterEach(() => {
-  window.scrollTo(0,0);
-  });
+  window.scrollTo(0, 0);
+});
 
 new Vue({
   router,

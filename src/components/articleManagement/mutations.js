@@ -17,6 +17,7 @@ export default {
       .post('/page/removeArticle', { id })
       .then((res) => {
         alert(res.data)
+        // console.log(res.data)
         return
       })
       .then(() => {
