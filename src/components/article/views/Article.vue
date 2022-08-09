@@ -60,9 +60,6 @@ export default {
 </script>
 
 <style scoped>
-.hljs{
-  background-color: #f6f8fa !important;
-}
 /* 代码高亮 */
 @import url('../../../../node_modules/mavon-editor/dist/highlightjs/styles/github.min.css');
 /* md的html样式 */

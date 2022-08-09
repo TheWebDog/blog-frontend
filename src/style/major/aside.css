@@ -1,3 +1,9 @@
+.aside_div .positionSticky:nth-last-child(1){
+  position: sticky;
+  top: 20px;
+}
+
+
 .aside_el_aside{
   height: 100%;
   padding: 0px 30px 0px 0px;
@@ -21,8 +27,8 @@
   background-color: rgb(246, 246, 246);
   margin-bottom: 20px;
   /* 不知道为什么不生效 因为el-aside组件设置了overflow */
-  position: sticky;
-  top: 20px;
+  /* position: sticky; */
+  /* top: 20px; */
 }
 .about_background_1 {
   width: 100%;
@@ -176,8 +182,8 @@
 
 .markdown-mdCatalog{
   padding: 20px 20px;
-  position: sticky;
-  top: 20px;
+  /* position: sticky; */
+  /* top: 20px; */
   min-height: 400px;
   background-color: #ffffff;
 }
@@ -198,3 +204,6 @@
   margin-bottom: 5px;
 }
 
+.hljs{
+  background-color: #f6f8fa !important;
+}

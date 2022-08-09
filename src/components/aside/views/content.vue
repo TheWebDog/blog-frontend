@@ -1,6 +1,6 @@
 <template>
       <div class="aside_div">
-        <div class="about">
+        <div class="about positionSticky">
           <div class="about_background_1"></div>
           <div class="social_div">
             <div class="line"></div>
@@ -38,7 +38,7 @@
           </div>
           <div class="about_background_2"></div>
         </div>
-        <div class="markdown-mdCatalog" v-if="get_ArticlePage.length!==0" v-html="get_ArticlePage.length==0?'':get_ArticlePage.mdCatalog"> </div>
+        <div class="markdown-mdCatalog positionSticky" v-if="get_ArticlePage.length!==0" v-html="get_ArticlePage.length==0?'':get_ArticlePage.mdCatalog"> </div>
       </div>
 </template>
 
