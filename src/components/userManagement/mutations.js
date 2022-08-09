@@ -16,7 +16,9 @@ export default {
     axios
       .post('/user/removeUser', { id })
       .then((res) => {
-        alert(res.data)
+        if (res.data !== '删除成功') {
+          alert(res.data)
+        }
         return
       })
       .then(() => {
@@ -33,7 +35,9 @@ export default {
     axios
       .post('/user/changeUser', { id, value })
       .then((res) => {
-        alert(res.data)
+        if (res.data !== '更改成功') {
+          alert(res.data)
+        }
         return
       })
       .then(() => {

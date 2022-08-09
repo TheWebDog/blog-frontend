@@ -16,7 +16,9 @@ export default {
     axios
       .post('/page/removeComment', { id })
       .then((res) => {
-        alert(res.data)
+        if (res.data !== '删除成功') {
+          alert(res.data)
+        }
         return
       })
       .then(() => {

@@ -40,20 +40,23 @@ export default {
       })
       .then((res) => {
         console.log(res.data)
-        switch (res.data) {
-          case '成功':
-            alert('上传成功')
-            break
-          case '失败':
-            alert('上传失败')
-            break
-          case '文章标题重复，请修改':
-            alert('文章标题重复，请修改')
-            break
-          default:
-            alert('未知错误,可能是submitPage时err了')
-            break
+        if (res.data !== '成功') {
+          alert(res.data)
         }
+        // switch (res.data) {
+        //   case '成功':
+        //     // alert('上传成功')
+        //     break
+        //   case '失败':
+        //     alert('上传失败')
+        //     break
+        //   case '文章标题重复，请修改':
+        //     alert('文章标题重复，请修改')
+        //     break
+        //   default:
+        //     alert('未知错误,可能是submitPage时err了')
+        //     break
+        // }
         // 清空上传的保存
         state.uploadFromData = new FormData()
         return

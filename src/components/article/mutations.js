@@ -66,7 +66,9 @@ export default {
       .post('/page/submitCommentComment', obj)
       .then((res) => {
         // console.log(res.data)
-        alert(res.data)
+        if (res.data !== '评论成功') {
+          alert(res.data)
+        }
       }).then(() => {
         var { thatCommit } = obj
         thatCommit('increment')

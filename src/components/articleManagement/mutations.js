@@ -16,7 +16,9 @@ export default {
     axios
       .post('/page/removeArticle', { id })
       .then((res) => {
-        alert(res.data)
+        if (res.data !== '删除成功') {
+          alert(res.data)
+        }
         // console.log(res.data)
         return
       })
