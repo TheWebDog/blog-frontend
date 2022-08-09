@@ -99,7 +99,6 @@ export default {
   },
   created () {
     this.action_getComment(this.id)
-    // console.log('Comment----------------',this.$cookies.get('userId')._id)
   },
     computed: {
     ...mapGetters(['get_ArticlePage','get_ArticleComment']),
@@ -109,33 +108,14 @@ export default {
     to_login () {
       this.$router.push('/login')
     },
-    // knowfinished () {
-    //   // console.log('knowfinished')
-    //   var finished = this.$store.getters.getActiveFinish
-    //   console.log(finished)
-    //   if (finished) {
-    //     this.$store.commit('ActiveFinishReset')
-    //     setTimeout(() => {
-    //       this.$router.go(0)
-    //     }, 500);
-    //   } else {
-    //     setTimeout(() => {
-    //       this.knowfinished()
-    //     }, 1000);
-    //   }
-    // },
     submit_comment () {
-      // console.log('submit_comment')
       var userComment = this.theComment
       var articleId = this.get_ArticlePage._id
       var articleTitle = this.get_ArticlePage.title
       var userName = this.$cookies.get('name').name
       var userId = this.$cookies.get('userId')._id
-      // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var thatCommit = this.$store.commit
-      // console.log('传入数据Data：',{ userComment, articleId, userName, userId, articleTitle ,thatCommit})
       this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatCommit })
-      // this.knowfinished()
     },
     replyTheComment (commentId, childrenUserName) {
       this.$prompt('回复', '留言', {
@@ -153,12 +133,6 @@ export default {
           var userId = this.$cookies.get('userId')._id
           var thatCommit = this.$store.commit
           this.action_submit_comment_comment({ commentId, userComment, userName, userId, thatCommit})
-          // await this.$router.go(0)
-          // this.$message({
-          //   type: 'success',
-          //   message: '提交成功'
-          // });
-          // this.knowfinished()
         } else {
           this.$message({
             type: 'warning',
