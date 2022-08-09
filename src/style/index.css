@@ -14,13 +14,6 @@
 @import url('./major/home.css');
 
 
-
-
-
 /* 响应式css */
 @import url('./media/maxWidth.css');
 @import url('./media/minWidth.css');
-
-.hljs{
-  background-color: #f6f8fa !important;
-}

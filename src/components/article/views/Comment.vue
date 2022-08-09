@@ -99,9 +99,10 @@ export default {
   },
   created () {
     this.action_getComment(this.id)
+    // console.log('Comment----------------',this.$cookies.get('userId')._id)
   },
     computed: {
-    ...mapGetters(['get_ArticleComment']),
+    ...mapGetters(['get_ArticlePage','get_ArticleComment']),
   },
   methods: {
     ...mapActions([ 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
@@ -132,7 +133,7 @@ export default {
       var userId = this.$cookies.get('userId')._id
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
       var thatCommit = this.$store.commit
-      // console.log('传入数据Data：',{ userComment, articleId, userName, userId, articleTitle, thatStore })
+      // console.log('传入数据Data：',{ userComment, articleId, userName, userId, articleTitle ,thatCommit})
       this.action_submit_comment({ userComment, articleId, userName, userId, articleTitle, thatCommit })
       // this.knowfinished()
     },

@@ -22,14 +22,14 @@ export default {
   },
   [SUBMIT_COMMENT]: function (state, obj) {
     console.log('SUBMIT_COMMENT')
-    console.log(obj)
+    // console.log(obj)
     axios
       .post('/page/submitComment', obj)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         switch (res.data) {
           case '成功':
-            alert('留言成功,请刷新页面')
+            alert('留言成功')
             break
           case '失败':
             alert('留言出错')
@@ -61,7 +61,7 @@ export default {
     axios
       .post('/page/submitCommentComment', obj)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         alert(res.data)
       }).then(() => {
         var { thatCommit } = obj
