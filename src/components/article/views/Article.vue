@@ -50,7 +50,6 @@ export default {
     ...mapActions(['action_getArticlePage']),
   },
   created () {
-    console.log('Article----------------',this.$cookies.get('userId'))
     this.action_getArticlePage(this.id)
   },
 }

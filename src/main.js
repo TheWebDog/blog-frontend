@@ -10,6 +10,27 @@ import 'mavon-editor/dist/css/index.css'
 
 import axios from "axios"
 
+// 按需导入 Loading 组件
+import { Loading } from 'element-ui'
+
+// 配置请求拦截器
+let loadingInstance = null
+axios.interceptors.request.use(config => {
+  // 开启 loading 效果
+  loadingInstance = Loading.service({ fullscreen: true })
+
+  // 固定写法
+  return config
+})
+
+// 配置响应拦截器
+axios.interceptors.response.use(response => {
+  // 关闭 loading 效果
+  loadingInstance.close()
+
+  return response
+})
+
 // 全局配置axios的请求根路径
 // axios.defaults.baseURL = "http://localhost:3000"
 axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
