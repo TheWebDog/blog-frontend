@@ -16,6 +16,7 @@
     padding: 20px 5px;
   }
   .Home_el_main {
+    overflow: hidden !important;
     width: 100%;
     padding: 0px !important;
   }
