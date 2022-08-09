@@ -26,7 +26,7 @@
       <div class="markdown-body" v-html="get_ArticlePage.html" />
       <h3 class="article_date_bottom">发布日期：{{ get_ArticlePage.date }}</h3>
     </div>
-    <div class="article_background">
+    <div class="article_background"  v-if="$store.state.isRouterAlive">
       <div class="article_comment_header">留言</div>
       <div class="article_comment_writing">
         <div class="article_comment_writing_header">写下留言</div>
@@ -41,7 +41,7 @@
         >
         </el-input>
 
-        <div class="article_comment_writing_footer"  v-if="$store.state.isRouterAlive">
+        <div class="article_comment_writing_footer">
           <el-button type="success" v-if="!loginornot" @click="to_login"
             >登录</el-button
           >
@@ -187,7 +187,7 @@ export default {
         } else {
           this.$message({
             type: 'warning',
-            message: value
+            message: '未输入'
           });
         }
       }).catch(() => {
