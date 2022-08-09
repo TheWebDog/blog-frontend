@@ -187,7 +187,7 @@ export default {
         } else {
           this.$message({
             type: 'warning',
-            message: '未输入'
+            message: value
           });
         }
       }).catch(() => {
