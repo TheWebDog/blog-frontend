@@ -24,9 +24,9 @@ let loadingInstance = null
 axios.interceptors.request.use(config => {
   // 判断请求是否是 不需要loading的接口，如果不是，加载 LoadingBar
   let url = config.url;
-  if (url.split('/').pop() !== 'search' && url.split('/').pop() !== '') {
+  if (url.split('/').pop() !== 'search') {
     // 开启 loading 效果
-    console.log('开启 loading 效果')
+    console.log('为了',url.split('/').pop(),'开启 loading 效果')
     loadingInstance = Loading.service({ fullscreen: true })
     reqNum++
   }
