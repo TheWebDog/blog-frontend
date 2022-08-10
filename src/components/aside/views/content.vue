@@ -38,7 +38,9 @@
           </div>
           <div class="about_background_2"></div>
         </div>
-        <div class="markdown-mdCatalog positionSticky" v-if="get_ArticlePage.length!==0" v-html="get_ArticlePage.length==0?'':get_ArticlePage.mdCatalog"> </div>
+        <div class="positionSticky markdown-mdCatalog-div">
+          <div class="markdown-mdCatalog" v-if="get_ArticlePage.length!==0" v-html="get_ArticlePage.length==0?'':get_ArticlePage.mdCatalog"> </div>
+        </div>
       </div>
 </template>
 

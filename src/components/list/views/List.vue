@@ -61,7 +61,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_articleList', 'get_picUrl']),
+    ...mapGetters(['get_articleList']),
     media_lessThan_width500px () {
       return this.screenWidth < 500
     },
