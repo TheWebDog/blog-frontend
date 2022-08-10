@@ -44,12 +44,16 @@ axios.interceptors.request.use(config => {
 
 // 配置响应拦截器
 axios.interceptors.response.use(response => {
-  reqNum--
-  if (reqNum <= 0) {
-    console.log('关闭 loading 效果')
-    // 关闭 loading 效果
-    loadingInstance.close()
+  let url = response.config.url
+  if (url.split('/').pop() !== 'search') {
+    reqNum--
+    if (reqNum <= 0) {
+      console.log('关闭 loading 效果')
+      // 关闭 loading 效果
+      loadingInstance.close()
+    }
   }
+
   return response
 })
 
