@@ -26,6 +26,7 @@ axios.interceptors.request.use(config => {
   let url = config.url;
   if (url.split('/').pop() !== 'search' && url.split('/').pop() !== '') {
     // 开启 loading 效果
+    console.log('开启 loading 效果')
     loadingInstance = Loading.service({ fullscreen: true })
     reqNum++
   }
@@ -37,6 +38,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(response => {
   reqNum--
   if (reqNum <= 0) {
+    console.log('关闭 loading 效果')
     // 关闭 loading 效果
     loadingInstance.close()
   }
