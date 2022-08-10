@@ -1,6 +1,6 @@
 export default {
   article: '',
   articleComment: [],
-  picUrl: '',
-  finished:false,
+  // picUrl: '',
+  // finished:false,
 }

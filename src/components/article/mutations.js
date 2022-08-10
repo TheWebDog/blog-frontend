@@ -1,23 +1,26 @@
 import axios from 'axios'
-import { CLEAR_ARTICLE, GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
+import { CLEAR_COMMENT, CLEAR_ARTICLE, GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
 export default {
   [CLEAR_ARTICLE]: function (state) {
     state.article = ''
+  },
+  [CLEAR_COMMENT]: function (state) {
+    state.articleComment= []
   },
   [GET_ARTICLEPAGE]: function (state, id) {
     axios
       .post('/page/getArticlePage', id)
       .then((res) => {
         state.article = res.data
-        var coverRequirePath = res.data.coverRequirePath
-        axios
-          .get(coverRequirePath)
-          .then((res) => {
-            state.picUrl = res.data
-          })
-          .catch((err) => {
-           console.log(err)
-          })
+        // var coverRequirePath = res.data.coverRequirePath
+        // axios
+        //   .get(coverRequirePath)
+        //   .then((res) => {
+        //     state.picUrl = res.data
+        //   })
+        //   .catch((err) => {
+        //    console.log(err)
+        //   })
       })
       .catch((err) => {
         console.log(err)

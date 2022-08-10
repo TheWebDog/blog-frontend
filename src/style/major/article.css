@@ -75,9 +75,22 @@
 }
 .comment_right_footer>.el-link>*{
   font-size: 12px;
+  font-weight: 600;
+  color: lightseagreen;
+}
+
+
+.comment_right_header{
+  font-weight: 600;
+  color: lightslategray;
+  font-size: 12px;
 }
 .comment_right_body{
   margin: 5px 0px;
+}
+.comment_right_footer{
+  color: lightslategray;
+  font-size: 12px;
 }
 
 

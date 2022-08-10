@@ -194,7 +194,8 @@
 }
 .markdown-mdCatalog a{
   text-decoration:none;
-  color: lightseagreen;
+  color: rgb(35, 118, 114);
+  font-weight: 600;
 }
 .markdown-mdCatalog ul{
   list-style: none;

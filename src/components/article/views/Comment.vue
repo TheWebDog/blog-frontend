@@ -88,23 +88,26 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: "Comment",
-  props: [
-    'id'
-  ],
+  // props: [
+  //   'id'
+  // ],
   data () {
     return {
       theComment: '',
       loginornot: this.$cookies.isKey('key'),
+      // id:this.$router.currentRoute.fullPath.split('/')[2],
+      id:this.$route.path.split('/')[2],
     }
   },
   created () {
+    // console.log(this.id)
     this.action_getComment(this.id)
   },
     computed: {
     ...mapGetters(['get_ArticlePage','get_ArticleComment']),
   },
   methods: {
-    ...mapActions([ 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment']),
+    ...mapActions([ 'action_submit_comment', 'action_getComment', 'action_submit_comment_comment' ,'action_clearComment']),
     to_login () {
       this.$router.push('/login')
     },
@@ -147,5 +150,8 @@ export default {
       });
     }
   },
+  beforeDestroy () {
+    this.action_clearComment()
+  }
 }
 </script>

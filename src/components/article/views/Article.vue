@@ -5,7 +5,7 @@
         <h1 class="article_title">{{ get_ArticlePage.title }}</h1>
         <el-image
           class="article_background_img"
-          :src="get_picUrl"
+          :src="get_ArticlePage.coverRequirePath"
           fit="cover"
         ></el-image>
         <h4 class="article_category">
@@ -45,7 +45,7 @@ export default {
     Comment,
   },
   computed: {
-    ...mapGetters(['get_ArticlePage','get_picUrl']),
+    ...mapGetters(['get_ArticlePage']),
   },
   methods: {
     ...mapActions(['action_getArticlePage','action_clearArticle']),
