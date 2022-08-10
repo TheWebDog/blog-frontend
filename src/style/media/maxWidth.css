@@ -25,6 +25,9 @@
   }
 }
 @media (max-width: 600px) {
+  .article_background_img >img {
+  object-position: left;
+  }
   .article_background_img{
     position: relative !important;
     /* right: 30px; */
