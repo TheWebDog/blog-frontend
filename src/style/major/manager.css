@@ -16,7 +16,7 @@
 .manager_icon{
   position: absolute;
   left: 0px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .manager_sign_out{
   position: absolute;

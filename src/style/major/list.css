@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   padding: 5px 4px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 /* 因为用了el元素 他列表里有margin和padding 导致元素异常 */
 .list_div > * {

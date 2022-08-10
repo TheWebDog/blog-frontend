@@ -156,7 +156,7 @@ export default {
   padding-left: 10px;
   display: block;
   /* 将输入框设置为块级元素 */
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .articleManage_search::-webkit-input-placeholder {
