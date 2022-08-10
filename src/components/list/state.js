@@ -1,4 +1,5 @@
 export default {
   articleList: [],
-  searchInputValue:'',
+  searchInputValue: '',
+  loading: false ,
 }

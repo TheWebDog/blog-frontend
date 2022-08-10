@@ -2,7 +2,8 @@ import axios from 'axios'
 import { GET_ARTICLELIST, SET_INPUT_VALUE } from './type'
 
 export default {
-  [SET_INPUT_VALUE]: function (state,value) {
+  [SET_INPUT_VALUE]: function (state, value) {
+    state.loading = true
     state.searchInputValue = value
     // console.log(value)
     axios
@@ -10,8 +11,7 @@ export default {
       .then((res) => {
       // console.log(res.data)
         state.articleList = res.data
-        console.log('SET_INPUT_VALUE')
-
+        state.loading = false
         // var arr =state.articleList
         // for (let i = 0; i < arr.length; i++){
         //   var coverRequirePath = arr[i].coverRequirePath
@@ -24,8 +24,6 @@ export default {
         //      console.log(err)
         //     })
         // }
-
-
 
     })
     .catch((err) => {

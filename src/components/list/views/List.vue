@@ -5,7 +5,7 @@
         <ul class="list_ul">
           <li class="list_li" v-for="(item, index) in get_articleList" :key="index" @click="to_article(item._id)"
             v-scroll-reveal.reset>
-            <el-card class="list_li_div" shadow="hover">
+            <el-card class="list_li_div" shadow="hover"  v-loading="get_loading">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
               <!-- el-image的bug喜加一 -->
               <!-- {{item.coverRequirePath}} -->
@@ -57,11 +57,11 @@ export default {
   name: "List",
   data () {
     return {
-      screenWidth: document.body.scrollWidth,
+      screenWidth: document.body.clientWidth,
     }
   },
   computed: {
-    ...mapGetters(['get_articleList']),
+    ...mapGetters(['get_articleList','get_loading']),
     media_lessThan_width500px () {
       return this.screenWidth < 500
     },
@@ -96,7 +96,7 @@ export default {
   mounted () {
     window.onresize = () => {
       return (() => {
-        this.screenWidth = document.body.scrollWidth
+        this.screenWidth = document.body.clientWidth
       })()
     }
   },
