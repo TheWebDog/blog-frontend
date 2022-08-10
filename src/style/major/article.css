@@ -106,3 +106,8 @@
 .comment_ul_commented{
   list-style: none;
 }
+
+
+.hljs{
+  background-color: #f6f8fa !important;
+}

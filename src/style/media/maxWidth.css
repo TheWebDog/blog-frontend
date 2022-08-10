@@ -64,6 +64,7 @@
   }
 }
 @media (max-width: 1200px) {
+
   /* .list_li {
     height: 150px;
   } */
@@ -84,6 +85,9 @@
   }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
+  .Home_el_main{
+    width: 660px;
+  }
   .Home_body {
     box-sizing: border-box;
     /* max-width: 700px; */

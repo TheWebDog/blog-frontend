@@ -68,9 +68,14 @@
   border-radius: 10px;
 }
 
+.writing_el_container{
+  width: 100%;
+}
+
 .writing_body{
   min-height: 500px;
   position: relative;
+  width: 90vw;
 }
 .writing_body_editor{
   min-height: 400px;
