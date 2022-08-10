@@ -8,8 +8,9 @@
             <el-card class="list_li_div" shadow="hover">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
               <!-- el-image的bug喜加一 -->
+              <!-- {{item.coverRequirePath}} -->
               <img class="el_card_el_image" :src="item.coverRequirePath" alt="图片又没了？"
-                onerror="this.src='默认图片的url地址';this.οnerrοr=null">
+                onerror="this.src='../../../static/picNotFound.png';this.οnerrοr=null">
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>

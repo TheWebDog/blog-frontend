@@ -147,23 +147,25 @@ export default {
     $imgAdd (pos, $file) {
       var mavon_editor_pic_formdata = new FormData();
       mavon_editor_pic_formdata.append("mavon_editor_pic", $file);
-      axios
-        .post('/page/submitMavonPic', mavon_editor_pic_formdata, { headers: { "Content-Type": "multipart/form-data" } })
-        .then((res) => {
-          // 将后端返回的url替换到文本原位置
-          // this.mdPic.set(res.data.requirePath, res.data.pic_path);
-          // this.$refs.md.$img2Url(pos, res.data.requirePath);
+      // console.log($file.miniurl)
+      this.$refs.md.$img2Url(pos, $file.miniurl);
+      // axios
+      //   .post('/page/submitMavonPic', mavon_editor_pic_formdata, { headers: { "Content-Type": "multipart/form-data" } })
+      //   .then((res) => {
+      //     // 将后端返回的url替换到文本原位置
+      //     // this.mdPic.set(res.data.requirePath, res.data.pic_path);
+      //     // this.$refs.md.$img2Url(pos, res.data.requirePath);
 
-          // const dataInfo = res.data.data.data
-          // console.log(dataInfo)
-          // const bufferUrl = btoa(new Uint8Array(dataInfo).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-          // this.url = 'data:image/png;base64,' + bufferUrl;//imgURL就是最后的图片base64数据
-          this.$refs.md.$img2Url(pos, res.data);
-        })
-        .catch((err) => {
-          console.log(err, '--发生axios错误')
-          console.log(mavon_editor_pic_formdata, '--mavon_editor_pic_formdata表单')
-        })
+      //     // const dataInfo = res.data.data.data
+      //     // console.log(dataInfo)
+      //     // const bufferUrl = btoa(new Uint8Array(dataInfo).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+      //     // this.url = 'data:image/png;base64,' + bufferUrl;//imgURL就是最后的图片base64数据
+      //     this.$refs.md.$img2Url(pos, res.data);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err, '--发生axios错误')
+      //     console.log(mavon_editor_pic_formdata, '--mavon_editor_pic_formdata表单')
+      //   })
     },
     // md文章的图片服务器端删除
     $imgDel (pos) {

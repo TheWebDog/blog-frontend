@@ -12,18 +12,18 @@ export default {
         state.articleList = res.data
         console.log('SET_INPUT_VALUE')
 
-        var arr =state.articleList
-        for (let i = 0; i < arr.length; i++){
-          var coverRequirePath = arr[i].coverRequirePath
-          axios
-            .get(coverRequirePath)
-            .then((res) => {
-              state.articleList[i].coverRequirePath = res.data
-            })
-            .catch((err) => {
-             console.log(err)
-            })
-        }
+        // var arr =state.articleList
+        // for (let i = 0; i < arr.length; i++){
+        //   var coverRequirePath = arr[i].coverRequirePath
+        //   axios
+        //     .get(coverRequirePath)
+        //     .then((res) => {
+        //       state.articleList[i].coverRequirePath = res.data
+        //     })
+        //     .catch((err) => {
+        //      console.log(err)
+        //     })
+        // }
 
 
 
@@ -42,18 +42,18 @@ export default {
           state.articleList = res.data
           // console.log('GET_ARTICLELIST')
 
-          var arr =state.articleList
-          for (let i = 0; i < arr.length; i++){
-            var coverRequirePath = arr[i].coverRequirePath
-            axios
-              .get(coverRequirePath)
-              .then((res) => {
-                state.articleList[i].coverRequirePath = res.data
-              })
-              .catch((err) => {
-               console.log(err)
-              })
-          }
+          // var arr =state.articleList
+          // for (let i = 0; i < arr.length; i++){
+          //   var coverRequirePath = arr[i].coverRequirePath
+          //   axios
+          //     .get(coverRequirePath)
+          //     .then((res) => {
+          //       state.articleList[i].coverRequirePath = res.data
+          //     })
+          //     .catch((err) => {
+          //      console.log(err)
+          //     })
+          // }
 
 
 
@@ -67,20 +67,20 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
-          console.log('else if')
+          // console.log('else if')
 
-          var arr =state.articleList
-          for (let i = 0; i < arr.length; i++){
-            var coverRequirePath = arr[i].coverRequirePath
-            axios
-              .get(coverRequirePath)
-              .then((res) => {
-                state.articleList[i].coverRequirePath = res.data
-              })
-              .catch((err) => {
-               console.log(err)
-              })
-          }
+          // var arr =state.articleList
+          // for (let i = 0; i < arr.length; i++){
+          //   var coverRequirePath = arr[i].coverRequirePath
+          //   axios
+          //     .get(coverRequirePath)
+          //     .then((res) => {
+          //       state.articleList[i].coverRequirePath = res.data
+          //     })
+          //     .catch((err) => {
+          //      console.log(err)
+          //     })
+          // }
 
 
 
