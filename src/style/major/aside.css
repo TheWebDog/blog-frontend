@@ -191,17 +191,21 @@
   font-size: 20px;
   text-align: center;
   color: lightslategray;
+  margin-bottom: 20px;
 }
 .markdown-mdCatalog a{
   text-decoration:none;
-  color: rgb(35, 118, 114);
-  font-weight: 600;
+  color: lightslategray;
+  font-weight: 500;
 }
-.markdown-mdCatalog ul{
-  list-style: none;
+.markdown-mdCatalog >ul{
   padding: 10px;
 }
+.markdown-mdCatalog ul{
+  padding: 0 0 5px 10px;
+}
 .markdown-mdCatalog li{
+  list-style: none;
   margin-bottom: 5px;
 }
 
