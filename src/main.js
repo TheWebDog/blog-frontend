@@ -8,6 +8,14 @@ import VueCookies from 'vue-cookies'
 import mavonEditor from 'mavon-editor' // 引入markdown 所有组件
 import 'mavon-editor/dist/css/index.css'
 
+
+Vue.directive('title', {              //单个修改标题
+  inserted: function (el) {
+  document.title = el.dataset.title
+  }
+})
+ 
+
 import axios from "axios"
 
 

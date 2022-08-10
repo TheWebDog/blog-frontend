@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app"  v-title data-title="Web Dog's Blog">
     <router-view></router-view>
     <el-backtop :bottom="100" :visibility-height="10"></el-backtop>
   </div>
