@@ -17,6 +17,9 @@
   } */
 }
 @media (min-width: 1200px) {
+  .Home_View{
+    width: 830px;
+  }
   .textIntroduction_ul {
     /* width: 400px; */
     width: calc(100% - 200px);

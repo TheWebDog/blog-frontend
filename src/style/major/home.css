@@ -72,8 +72,5 @@ body::-webkit-scrollbar-track {
   width: 100%;
   box-sizing: border-box;
   margin: 5px auto;
-  padding: 0px 10px;
-}
-.Home_el_main{
-  width: 830px;
+  padding: 0px 5px;
 }

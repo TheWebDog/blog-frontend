@@ -18,7 +18,7 @@
   .Home_el_main {
     overflow: hidden !important;
     width: 100%;
-    padding: 0px !important;
+    padding: 20px !important;
   }
   .el-drawer {
     width: 220px !important;
@@ -88,7 +88,7 @@
   }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
-  .Home_el_main{
+  .Home_View{
     width: 660px;
   }
   .Home_body {
