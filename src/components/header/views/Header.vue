@@ -123,6 +123,8 @@ export default {
       loginornot: this.$cookies.isKey('key'),
       // windoWidth: document.documentElement.scrollWidth,
       // screenWidth:  document.body.scrollWidth,
+
+      timeOut : null ,
     }
   },
   computed: {
@@ -137,16 +139,20 @@ export default {
   methods: {
     ...mapActions(['action_getSearchList', 'action_setInputValue']),
     changeValue: function () {
-      var value = this.searchinput
-      if (value.length != 0) {
-        if (this.$route.fullPath != '/search') {
-          this.$router.replace('/search')
+      clearTimeout(this.timeOut)
+      this.timeOut = null
+      this.timeOut = setTimeout(() => {
+        var value = this.searchinput
+        if (value.length != 0) {
+          if (this.$route.fullPath != '/search') {
+            this.$router.replace('/search')
+          }
+          this.action_setInputValue(value)
+        } else {
+          // this.$router.replace('/list')
+          this.$router.replace('/')
         }
-        this.action_setInputValue(value)
-      } else {
-        // this.$router.replace('/list')
-        this.$router.replace('/')
-      }
+      }, 1000);
     },
     to_login () {
       this.$router.push('/login')
