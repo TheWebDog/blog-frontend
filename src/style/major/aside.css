@@ -1,4 +1,4 @@
-.aside_div .positionSticky:nth-last-child(1){
+.positionSticky:nth-last-child(1){
   position: sticky;
   top: 20px;
 }
@@ -211,7 +211,7 @@
 
 .markdown-mdCatalog-div{
   overflow: overlay;
-  height: 95vh;
+  max-height: 95vh;
 }
 
 .markdown-mdCatalog-div::-webkit-scrollbar {

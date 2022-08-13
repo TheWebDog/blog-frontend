@@ -1,7 +1,7 @@
 @media (max-width: 800px) {
   .writing_header {
     max-width: 450px;
-    min-width: 315px;
+    /* min-width: 315px; */
     margin: auto;
   }
   .writing_header_left,
@@ -9,8 +9,9 @@
     width: 100%;
   }
   .writing_body {
+    width: 100%;
     max-width: 450px;
-    min-width: 300px;
+    /* min-width: 300px; */
     margin: auto;
     box-sizing: border-box;
     padding: 20px 5px;

@@ -1,5 +1,5 @@
 .writing_div{
-  width: 100%;
+  /* width: 100%; */
   min-height: 800px;
 }
 .writing_el_upload{
@@ -103,7 +103,9 @@
 
 
 
-
+.v-note-wrapper{
+  min-width: 0 !important;
+}
 
 
 
