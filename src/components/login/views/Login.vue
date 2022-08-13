@@ -123,15 +123,20 @@ export default {
         axios
           .post('/user/login', { name, password })
           .then((res) => {
-            var { power,name,_id } = res.data.user
-            this.$cookies.set('key', { power }, '1d')
-            this.$cookies.set('name', { name }, '1d')
-            this.$cookies.set('userId', { _id }, '1d')
-            if (power < 10) {
-              this.$router.back()
+            if (res.data.user) {
+              var { power, name, _id } = res.data.user
+              this.$cookies.set('key', { power }, '1d')
+              this.$cookies.set('name', { name }, '1d')
+              this.$cookies.set('userId', { _id }, '1d')
+              if (power < 10) {
+                this.$router.back()
+              } else {
+                this.$router.push('/manager')
+              }
             } else {
-              this.$router.push('/manager')
+              alert(res.data)
             }
+
           })
           .catch((err) => {
             console.log(err)
