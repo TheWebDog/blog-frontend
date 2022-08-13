@@ -14,6 +14,21 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
+      path: '/user',
+      name: 'user',
+      component: () => {
+        return import('./components/user/views/User.vue')
+      },
+      // 路由守卫 通过帐号权限控制可访问页面
+      beforeEnter: (to, from, next) => {
+        if (VueCookies.isKey('key')) {
+          next()
+        } else {
+          next('/login')
+        }
+      },
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => {
@@ -24,7 +39,7 @@ export default new VueRouter({
         if (VueCookies.isKey('key')) {
           if (VueCookies.get('key').power < 10) {
             // console.log(from,'from')
-            next('/')
+            next('/user')
           } else {
             next('/manager')
           }
@@ -44,12 +59,12 @@ export default new VueRouter({
       beforeEnter: (to, from, next) => {
         if (VueCookies.isKey('key')) {
           if (VueCookies.get('key').power < 10) {
-            next('/')
+            next('/user')
           } else {
             next()
           }
         } else {
-          next('/')
+          next('/login')
         }
       },
       children: [

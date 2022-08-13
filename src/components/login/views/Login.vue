@@ -128,11 +128,7 @@ export default {
               this.$cookies.set('key', { power }, '1d')
               this.$cookies.set('name', { name }, '1d')
               this.$cookies.set('userId', { _id }, '1d')
-              if (power < 10) {
-                this.$router.back()
-              } else {
-                this.$router.push('/manager')
-              }
+              this.$router.push('/manager')
             } else {
               alert(res.data)
             }

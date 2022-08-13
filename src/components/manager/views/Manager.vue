@@ -6,8 +6,9 @@
           <!--定义鼠标经过时鼠标图型样式-->
           <i class="el-icon-menu manager_icon" @click="IsCollapse"></i>
           <span>博客后台</span>
-          <span class="manager_sign_out" @click="sign_out">
-            <el-link :underline="false">登出</el-link>
+          <span class="manager_head_Btn">
+            <el-link class="manager_Personal" :underline="false" @click="to_Personal">个人中心</el-link>
+            <!-- <el-link class="manager_sign_out" :underline="false" @click="sign_out">登出</el-link> -->
           </span>
         </div>
       </el-header>
@@ -97,9 +98,12 @@ export default {
     IsCollapse () {
       this.manager_isCollapse = !this.manager_isCollapse; // 菜单是否隐藏
     },
-    sign_out () {
-      this.$cookies.remove('key')
-      this.$router.push('/login')
+    // sign_out () {
+    //   this.$cookies.remove('key')
+    //   this.$router.push('/login')
+    // },
+    to_Personal () {
+      this.$router.push('/user')
     },
     to_home () {
       this.$router.push('/')

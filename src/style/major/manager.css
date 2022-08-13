@@ -10,18 +10,24 @@
   text-align: center;
   font-weight: 900;
 }
-.manager_header>.manager_sign_out>.el-link{
-  font-weight: 900;
-}
 .manager_icon{
   position: absolute;
   left: 0px;
   /* cursor: pointer; */
 }
-.manager_sign_out{
+
+.manager_head_Btn{
   position: absolute;
   right: 0px;
+  
 }
+.manager_head_Btn>.el-link{
+  font-weight: 900;
+  margin-left: 10px;
+}
+/* .manager_Personal{
+
+} */
 
 .manager_body{
   min-height: 600px;
