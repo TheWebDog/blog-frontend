@@ -15,7 +15,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0);
   /* 窄屏侧边导航栏影响padding */
   padding: 0px !important;
-  overflow: overlay;
+  /* overflow: overlay; */
 }
 
 

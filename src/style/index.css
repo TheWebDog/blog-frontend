@@ -26,6 +26,6 @@ body{
 textarea ,input ,.v-note-edit.divarea-wrapper {
   cursor:url(./cursor/1/IBeam.png),auto !important;
 }
-.el-page-header__left ,.el-menu-item ,.op-icon ,.el-upload-dragger ,button ,a ,.articleManage_search ,.userManage_search ,.headPortrait ,.social_li ,.list_li ,.manager_icon ,.theheadPortrait ,.el-tabs__item ,.is-top ,.el-card__body ,.el-backtop ,.btn-next ,.el-pager li, .el-pager{
+svg ,.el-page-header__left ,.el-menu-item ,.op-icon ,.el-upload-dragger ,button ,a ,.articleManage_search ,.userManage_search ,.headPortrait ,.social_li ,.list_li ,.manager_icon ,.theheadPortrait ,.el-tabs__item ,.is-top ,.el-card__body ,.el-backtop ,.btn-next ,.el-pager li, .el-pager{
   cursor:url(./cursor/1/Link.png),auto !important;
 }
