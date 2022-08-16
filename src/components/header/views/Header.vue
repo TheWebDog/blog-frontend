@@ -44,10 +44,10 @@
           </li>
           <li
             class="left_nav_li_el_link"
-            @click="sign_out"
+            @click="to_Personal"
             :hidden="!loginornot"
           >
-            <el-link icon="el-icon-user">退出</el-link>
+            <el-link icon="el-icon-user">个人中心</el-link>
           </li>
           <li
             class="left_nav_li_el_link"
@@ -97,8 +97,8 @@
                   show-word-limit
                 ></el-input>
               </li>
-              <li class="header_li" @click="sign_out" v-if="loginornot">
-                <el-link icon="el-icon-user">退出</el-link>
+              <li class="header_li" @click="to_Personal" v-if="loginornot">
+                <el-link icon="el-icon-user">个人中心</el-link>
               </li>
               <li class="header_li" @click="to_login" v-if="!loginornot">
                 <el-link icon="el-icon-warning-outline">未登录</el-link>
@@ -157,9 +157,12 @@ export default {
     to_login () {
       this.$router.push('/login')
     },
-    sign_out () {
-      this.$cookies.remove('token')
-      this.$router.push('/login')
+    // sign_out () {
+    //   this.$cookies.remove('token')
+    //   this.$router.push('/login')
+    // },
+    to_Personal () {
+      this.$router.push('/user')
     },
     to_home () {
       this.$router.push('/')
