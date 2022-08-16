@@ -66,7 +66,7 @@
   border-bottom: 1px solid #e3e3e3e3;
   position: sticky;
   top: 0px;
-  background-color: #ffffffef;
+  background-color: #ffffff;
   z-index: 100;
 }
 .article_comment_writing_header,
@@ -115,6 +115,7 @@
   margin-bottom: 30px;
 }
 .article_comment_li_master_left{
+  min-width: 50px;
   width: 50px;
 }
 
@@ -125,6 +126,11 @@
 }
 .comment_ul_commented{
   list-style: none;
+}
+.article_comment_li_master_right{
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 
