@@ -120,7 +120,7 @@ export default {
       searchinput: '',
       drawer: false,
       tabPosition: 'left',
-      loginornot: this.$cookies.isKey('key'),
+      loginornot: this.$cookies.isKey('token'),
       // windoWidth: document.documentElement.scrollWidth,
       // screenWidth:  document.body.scrollWidth,
 
@@ -158,7 +158,7 @@ export default {
       this.$router.push('/login')
     },
     sign_out () {
-      this.$cookies.remove('key')
+      this.$cookies.remove('token')
       this.$router.push('/login')
     },
     to_home () {

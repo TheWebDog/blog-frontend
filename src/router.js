@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueCookies from 'vue-cookies'
+import axios from 'axios'
 
 // 破除导航重复报错
 const originalPush = VueRouter.prototype.push
@@ -21,11 +22,19 @@ export default new VueRouter({
       },
       // 路由守卫 通过帐号权限控制可访问页面
       beforeEnter: (to, from, next) => {
-        if (VueCookies.isKey('key')) {
+        var token = VueCookies.get('token')
+        if (token) {
           next()
         } else {
           next('/login')
         }
+
+        // next()
+        // if (VueCookies.isKey('key')) {
+        //   next()
+        // } else {
+        //   next('/login')
+        // }
       },
     },
     {
@@ -36,16 +45,42 @@ export default new VueRouter({
       },
       // 路由守卫 通过帐号权限控制可访问页面
       beforeEnter: (to, from, next) => {
-        if (VueCookies.isKey('key')) {
-          if (VueCookies.get('key').power < 10) {
-            // console.log(from,'from')
-            next('/user')
-          } else {
-            next('/manager')
-          }
+
+        var token = VueCookies.get('token')
+
+        if (token) {
+
+          axios
+          .post('/user/check', {token})
+          .then((res) => {
+            // console.log(res.data.user.power)
+            if (res.data.user.power < 10) {
+              next('/user')
+            } else {
+              next('/manager')
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+
         } else {
+
           next()
+
         }
+
+        // next()
+        // if (VueCookies.isKey('key')) {
+        //   if (VueCookies.get('key').power < 10) {
+        //     // console.log(from,'from')
+        //     next('/user')
+        //   } else {
+        //     next('/manager')
+        //   }
+        // } else {
+        //   next()
+        // }
       },
     },
     {
@@ -57,14 +92,28 @@ export default new VueRouter({
       },
       // 路由守卫 通过帐号权限控制可访问页面
       beforeEnter: (to, from, next) => {
-        if (VueCookies.isKey('key')) {
-          if (VueCookies.get('key').power < 10) {
-            next('/user')
-          } else {
-            next()
-          }
+        var token = VueCookies.get('token')
+
+        if (token) {
+
+          axios
+          .post('/user/check', {token})
+          .then((res) => {
+            // console.log(res.data.user.power)
+            if (res.data.user.power < 10) {
+              next('/user')
+            } else {
+              next()
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+
         } else {
+
           next('/login')
+
         }
       },
       children: [

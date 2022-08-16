@@ -123,16 +123,27 @@ export default {
         axios
           .post('/user/login', { name, password })
           .then((res) => {
-            if (res.data.user) {
-              var { power, name, _id } = res.data.user
-              this.$cookies.set('key', { power }, '1d')
-              this.$cookies.set('name', { name }, '1d')
-              this.$cookies.set('userId', { _id }, '1d')
-              this.$router.push('/manager')
+            if (res.data.token) {
+              // var { power, name, _id } = res.data.user
+              // this.$cookies.set('key', { power }, '1d')
+              // this.$cookies.set('name', { name }, '1d')
+              // this.$cookies.set('userId', { _id }, '1d')
+              this.$cookies.set('token', res.data.token)
+              this.$message({
+                showClose: true,
+                message: '登陆成功',
+                type: 'success'
+              });
+              setTimeout(() => {
+                this.$router.push('/manager')
+              }, 1000);
             } else {
-              alert(res.data)
+              this.$message({
+                showClose: true,
+                message: res.data,
+                type: 'error'
+              });
             }
-
           })
           .catch((err) => {
             console.log(err)
