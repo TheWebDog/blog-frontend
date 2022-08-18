@@ -16,7 +16,7 @@ export default new VueRouter({
   routes: [
     {
       path: '/user',
-      name: 'user',
+      name: '',
       component: () => {
         return import('./components/user/views/User.vue')
       },
@@ -36,6 +36,15 @@ export default new VueRouter({
         //   next('/login')
         // }
       },
+      children: [
+        {
+          path: '',
+          name: 'userInformation',
+          component: () => {
+            return import('./components/user/views/userInformation.vue')
+          },
+        },
+      ]
     },
     {
       path: '/login',

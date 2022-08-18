@@ -33,7 +33,7 @@ export default {
   [CHANGE_USERDATA]: function (state, idandvalue) {
     var { id, value } = idandvalue
     axios
-      .post('/user/changeUser', { id, value })
+      .post('/user/changeUserPower', { id, value })
       .then((res) => {
         if (res.data !== '更改成功') {
           alert(res.data)

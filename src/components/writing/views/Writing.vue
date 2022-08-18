@@ -71,12 +71,12 @@
             icon="el-icon-document-checked"
             circle
           ></el-button>
-          <el-button
+          <!-- <el-button
             type="info"
             @click="PublishSave"
             icon="el-icon-tickets"
             circle
-          ></el-button>
+          ></el-button> -->
           <el-button
             type="danger"
             @click="clearPageInput"
@@ -121,7 +121,7 @@ export default {
     ...mapGetters(['get_toolbars', 'get_querySearchAsync', 'get_uploadFromData']),
   },
   methods: {
-    ...mapActions(['action_querySearchAsync', 'action_uploadSectionFile', 'action_PublishButton', 'action_PublishSave', 'action_PublishPic']),
+    ...mapActions(['action_querySearchAsync', 'action_uploadSectionFile', 'action_PublishButton', 'action_PublishPic']),
     // 页面初始化、获取分类有关------------------------------------------------------------
     // 文章分类部分
     querySearchAsync (queryString, cb) {
@@ -241,30 +241,30 @@ export default {
         this.$message.error('需要将标题、分类、简介和封面图片都填充完整');
       }
     },
-    // 保存文章
-    PublishSave () {
-      var saveData = this.saveFromData,
-        theTitle = this.title,
-        theCategory = this.category,
-        theSynopsis = this.synopsis,
-        themd = this.md,
-        themdPic = [];
-      this.mdPic.forEach((item) => {
-        themdPic.push(item)
-      })
+    // // 保存文章  // 弃用
+    // PublishSave () {
+    //   var saveData = this.saveFromData,
+    //     theTitle = this.title,
+    //     theCategory = this.category,
+    //     theSynopsis = this.synopsis,
+    //     themd = this.md,
+    //     themdPic = [];
+    //   this.mdPic.forEach((item) => {
+    //     themdPic.push(item)
+    //   })
 
-      if (themdPic.length == 0 && themd.length == 0 && theSynopsis.length == 0 && theCategory.length == 0 && theTitle.length == 0) {
-        this.$message.error('啥也没输入呢，还保存个啥！？');
-      } else {
-        saveData.append('title', theTitle) // 标题
-        saveData.append('category', theCategory) // 分类
-        saveData.append('synopsis', theSynopsis) // 简介
-        saveData.append('md', themd) // md原文
-        saveData.append('mdPic', themdPic) // 有关图片路径
-        this.action_PublishSave(saveData)
-      }
+    //   if (themdPic.length == 0 && themd.length == 0 && theSynopsis.length == 0 && theCategory.length == 0 && theTitle.length == 0) {
+    //     this.$message.error('啥也没输入呢，还保存个啥！？');
+    //   } else {
+    //     saveData.append('title', theTitle) // 标题
+    //     saveData.append('category', theCategory) // 分类
+    //     saveData.append('synopsis', theSynopsis) // 简介
+    //     saveData.append('md', themd) // md原文
+    //     saveData.append('mdPic', themdPic) // 有关图片路径
+    //     this.action_PublishSave(saveData)
+    //   }
 
-    },
+    // },
     // 清空文章
     clearPageInput () {
       // 删除md文章服务器端保存的图片

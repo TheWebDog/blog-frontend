@@ -1,4 +1,4 @@
-import { GET_SERVER_CLASSIFY, UPLOAD_File, SET_File, SAVE_File,SET_PIC } from './type'
+import { GET_SERVER_CLASSIFY, UPLOAD_File, SET_File,SET_PIC } from './type'
 import axios from 'axios'
 
 export default {
@@ -70,22 +70,22 @@ export default {
         console.log(theData, '--theData表单')
       })
   },
-  // 保存文章-草稿
-  [SAVE_File]: function (state, saveData) {
-    axios
-      .post('/page/savePage', saveData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
-      .then((res) => {
-        console.log(res.data)
-        // 清空上传的保存
-        this.uploadFromData = new FormData()
-        // 清空临时的保存
-        this.saveFromData = new FormData()
-      })
-      .catch((err) => {
-        console.log(err, '--发生axios错误')
-        console.log(saveData, '--theData表单')
-      })
-  },
+  // // 保存文章-草稿
+  // [SAVE_File]: function (state, saveData) {
+  //   axios
+  //     .post('/page/savePage', saveData, {
+  //       headers: { 'Content-Type': 'multipart/form-data' },
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data)
+  //       // 清空上传的保存
+  //       this.uploadFromData = new FormData()
+  //       // 清空临时的保存
+  //       this.saveFromData = new FormData()
+  //     })
+  //     .catch((err) => {
+  //       console.log(err, '--发生axios错误')
+  //       console.log(saveData, '--theData表单')
+  //     })
+  // },
 }
