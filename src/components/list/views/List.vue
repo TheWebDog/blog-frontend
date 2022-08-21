@@ -3,7 +3,7 @@
     <el-row :gutter="12">
       <el-col :span="24">
         <ul class="list_ul">
-          <li class="list_li" v-for="(item, index) in get_articleList" :key="index" @click="to_article(item._id)"
+          <li class="list_li" v-for="(item) in get_articleList" :key="item._id" @click="to_article(item.pageId)"
             v-scroll-reveal.reset>
             <el-card class="list_li_div" shadow="hover"  v-loading="get_loading">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
@@ -68,8 +68,8 @@ export default {
   },
   methods: {
     ...mapActions(['action_getArticleList']),
-    to_article (item) {
-      this.$router.push(`/article/${item}`)
+    to_article (id) {
+      this.$router.push(`/article/${id}`)
     },
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`);
