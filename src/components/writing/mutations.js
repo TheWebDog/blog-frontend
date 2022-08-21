@@ -15,21 +15,33 @@ export default {
   },
   // 填入文章-发布
   [SET_File]: function (state, data) {
-    var { theTitle, theCategory, theSynopsis, themd, thehtml, themdPic, theCatalog } = data
+    var { theTitle, theCategory, theSynopsis, themd, thehtml, theCatalog } = data
     var theData = state.uploadFromData
     theData.append('title', theTitle) // 标题
     theData.append('category', theCategory) // 分类
     theData.append('synopsis', theSynopsis) // 简介
     theData.append('md', themd) // md原文
     theData.append('html', thehtml) // 转化后的html
-    theData.append('mdPic', themdPic) // 有关图片路径
+    // theData.append('mdPic', themdPic) // 有关图片路径
     theData.append('mdCatalog', theCatalog) // 文章目录
   },
   // 填入图片-发布
   [SET_PIC]: function (state, data) {
     var { file } = data
-    var theData = state.uploadFromData
-    theData.append('pic', file.raw) // 封面
+    // console.log(file.raw)
+    var reader = new FileReader()
+    reader.readAsDataURL(file.raw)
+    reader.onload = () => {
+      // console.log('file 转 base64结果：' + reader.result)
+      // this.iconBase64 = reader.result
+
+      // console.log(reader.result)
+      var theData = state.uploadFromData
+      theData.append('coverRequirePath', reader.result) // 封面
+    }
+    reader.onerror = function (error) {
+      console.log('Error: ', error)
+    }
   },
   // 上传文章
   [UPLOAD_File]: function (state,obj) {

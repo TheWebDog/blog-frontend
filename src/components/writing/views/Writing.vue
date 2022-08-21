@@ -38,11 +38,11 @@
             :file-list="fileList"
             list-type="picture"
             :before-remove="beforeRemove"
-            :on-remove="handleRemove"
+            
             :on-exceed="handleExceed"
             :http-request="uploadSectionFile"
             :auto-upload="false"
-            :on-change="onChange"
+
             ref="upload"
           >
             <i class="el-icon-upload"></i>
@@ -112,7 +112,7 @@ export default {
       html: "", // markdown解析成html
       mdContent:'', // 文章目录
 
-      saveFromData: new FormData(), // 封面图片临时保存 保存草稿 若发布 则清空
+      // saveFromData: new FormData(), // 封面图片临时保存 保存草稿 若发布 则清空
       mdPic: new Map(), // md文章临时图片地址
     };
   },
@@ -145,8 +145,8 @@ export default {
     // mavon-editor有关------------------------------------------------------------
     // md文章的图片服务器端保存
     $imgAdd (pos, $file) {
-      var mavon_editor_pic_formdata = new FormData();
-      mavon_editor_pic_formdata.append("mavon_editor_pic", $file);
+      // var mavon_editor_pic_formdata = new FormData();
+      // mavon_editor_pic_formdata.append("mavon_editor_pic", $file);
       // console.log($file.miniurl)
       this.$refs.md.$img2Url(pos, $file.miniurl);
       // axios
@@ -169,19 +169,22 @@ export default {
     },
     // md文章的图片服务器端删除
     $imgDel (pos) {
+      // var mavon_editor_pic_formdata = new FormData();
+      // mavon_editor_pic_formdata.append("mavon_editor_pic", $file);
       // pos.length 会多一个没用的
-      for (var i = 0; i < pos.length - 1; i++) {
-        this.mdPic.delete(pos[i])
-        var axios_get = pos[i].replace(/getPic/, 'removePic')
-        axios
-          .get(axios_get)
-          .then((res) => {
-            console.log(res.data)
-          })
-          .catch((err) => {
-            console.log(err, '--错误')
-          })
-      }
+      console.log(pos)
+      // for (var i = 0; i < pos.length - 1; i++) {
+      //   this.mdPic.delete(pos[i])
+      //   var axios_get = pos[i].replace(/getPic/, 'removePic')
+      //   axios
+      //     .get(axios_get)
+      //     .then((res) => {
+      //       console.log(res.data)
+      //     })
+      //     .catch((err) => {
+      //       console.log(err, '--错误')
+      //     })
+      // }
     },
     // md文章展示
     change (value, render) {
@@ -203,22 +206,23 @@ export default {
     beforeRemove (file) {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
-    // 封面图片从临时草稿移除
-    handleRemove () {
-      this.saveFromData.delete('pic');
-    },
-    // 封面图片保存于临时草稿
-    onChange (file) {
-      this.saveFromData.append('pic', file.raw)
-      this.action_PublishPic({ file })
-    },
+    // // 封面图片从临时草稿移除
+    // handleRemove () {
+    //   this.saveFromData.delete('pic');
+    // },
+    // // 封面图片保存于临时草稿
+    // onChange (file) {
+      
+    //   this.saveFromData.append('pic', file.raw)
+    //   this.action_PublishPic({ file })
+    // },
     // 文件上传触发的函数 :http-request="uploadSectionFile"
     uploadSectionFile () {
       // var thatStore = this.$store
       var thatCommit = this.$store.commit
       this.action_uploadSectionFile({ thatCommit })
-      // 清空临时的保存
-      this.saveFromData = new FormData()
+      // // 清空临时的保存
+      // this.saveFromData = new FormData()
     },
 
     // 按钮有关------------------------------------------------------------
@@ -234,7 +238,7 @@ export default {
       this.mdPic.forEach((item) => {
         themdPic.push(item)
       })
-      if (this.get_uploadFromData.get('pic') && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
+      if (this.get_uploadFromData.get('coverRequirePath') && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
         this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic ,theCatalog });
         this.$refs.upload.submit();// submit用于触发 uploadSectionFile
       } else {

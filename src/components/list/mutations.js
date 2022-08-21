@@ -38,6 +38,7 @@ export default {
         .post('/page/getList', { value })
         .then((res) => {
           state.articleList = res.data
+          console.log(res.data)
           // console.log('GET_ARTICLELIST')
 
           // var arr =state.articleList
@@ -52,8 +53,6 @@ export default {
           //      console.log(err)
           //     })
           // }
-
-
 
         })
         .catch((err) => {
