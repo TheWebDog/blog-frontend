@@ -281,7 +281,8 @@ const router = new VueRouter({
 // js的
 router.beforeEach(function (to, from, next) {
   // document.title = to.meta.title;
-  document.title = "Web Dog's Blog"
+  var title = "Web Dog's Blog"
+  document.title = title
   var timer,arr;
   document.addEventListener('visibilitychange', function () {
       // 用户息屏、或者切到后台运行 （离开页面） 
@@ -315,8 +316,8 @@ router.beforeEach(function (to, from, next) {
           ];
           document.title = arr[Math.ceil(Math.random() * 8)];
           timer = setTimeout(function () {
-              document.title = to.meta.title;
-          }, 5000);
+              document.title = title;
+          }, 3000);
       }
   });
   next();
