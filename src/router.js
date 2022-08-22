@@ -298,7 +298,7 @@ router.beforeEach(function (to, from, next) {
               '(ง •̀_•́)ง我在这里',
               '<(｀^´)快点回来',
           ];
-          document.title = arr[Math.ceil(Math.random() * 7)];
+          document.title = arr[parseInt(Math.random() * 8)];
       }
       // 用户打开或回到页面 
       if (document.visibilityState === 'visible') {
@@ -314,7 +314,7 @@ router.beforeEach(function (to, from, next) {
               'ᴗ͈ˬᴗ͈ෆ你回来辣',
               '꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱你回来辣',
           ];
-          document.title = arr[Math.ceil(Math.random() * 8)];
+          document.title = arr[parseInt(Math.random() * 9)];
           timer = setTimeout(function () {
               document.title = title;
           }, 3000);
