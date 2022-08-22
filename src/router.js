@@ -11,7 +11,7 @@ VueRouter.prototype.push = function push(location) {
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     {
@@ -276,3 +276,100 @@ export default new VueRouter({
     },
   ],
 })
+
+
+// js的
+router.beforeEach(function (to, from, next) {
+  // document.title = to.meta.title;
+  document.title = "Web Dog's Blog"
+  var timer,arr;
+  document.addEventListener('visibilitychange', function () {
+      // 用户息屏、或者切到后台运行 （离开页面） 
+      if (document.visibilityState === 'hidden') {
+          clearTimeout(timer);
+           arr = [
+              'ヾ(￣▽￣)Bye~Bye~',
+              '=͟͟͞͞(꒪⌓꒪*)你咋走了',
+              '(；′⌒`)记得回来',
+              '‎(,,•́ . •̀,,)记得回来',
+              '‎(●︎˘͈ ᵕ˘͈)在等你哦',
+              '(づ ●─● )づ你别走呀',
+              '(ง •̀_•́)ง我在这里',
+              '<(｀^´)快点回来',
+          ];
+          document.title = arr[Math.ceil(Math.random() * 7)];
+      }
+      // 用户打开或回到页面 
+      if (document.visibilityState === 'visible') {
+          clearTimeout(timer);
+           arr = [
+              '⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄你回来辣',
+              '(✿◡‿◡)你回来辣',
+              '✧ʕ̢̣̣̣̣̩̩̩̩·͡˔·ོɁ̡̣̣̣̣̩̩̩̩✧你回来辣',
+              '‎₍˄·͈༝·͈˄₎◞你回来辣',
+              '(๑>؂<๑)你回来辣',
+              '(づ ●─● )づ你回来辣',
+              '(ง •̀_•́)ง你回来辣',
+              'ᴗ͈ˬᴗ͈ෆ你回来辣',
+              '꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱你回来辣',
+          ];
+          document.title = arr[Math.ceil(Math.random() * 8)];
+          timer = setTimeout(function () {
+              document.title = to.meta.title;
+          }, 5000);
+      }
+  });
+  next();
+});
+
+
+// ts的
+// router.beforeEach((to: any, from, next) => {
+//   document.title = to.meta.title;
+//   let timer: any;
+//   document.addEventListener('visibilitychange', function () {
+//     // 用户息屏、或者切到后台运行 （离开页面） 
+//     if (document.visibilityState === 'hidden') {
+//       clearTimeout(timer)
+//       const arr: Array<string> = [
+//         'ヾ(￣▽￣)Bye~Bye~',
+//         '=͟͟͞͞(꒪⌓꒪*)你咋走了',
+//         '(；′⌒`)记得回来',
+//         '‎(,,•́ . •̀,,)记得回来',
+//         '‎(●︎˘͈ ᵕ˘͈)在等你哦',
+//         '(づ ●─● )づ你别走呀',
+//         '(ง •̀_•́)ง我在这里',
+//         '<(｀^´)快点回来',
+//       ]
+//       document.title = arr[Math.ceil(Math.random() * 7)]
+//     }
+//     // 用户打开或回到页面 
+//     if (document.visibilityState === 'visible') {
+//       clearTimeout(timer)
+//       const arr: Array<string> = [
+//         '⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄你回来辣',
+//         '(✿◡‿◡)你回来辣',
+//         '✧ʕ̢̣̣̣̣̩̩̩̩·͡˔·ོɁ̡̣̣̣̣̩̩̩̩✧你回来辣',
+//         '‎₍˄·͈༝·͈˄₎◞你回来辣',
+//         '(๑>؂<๑)你回来辣',
+//         '(づ ●─● )づ你回来辣',
+//         '(ง •̀_•́)ง你回来辣',
+//         'ᴗ͈ˬᴗ͈ෆ你回来辣',
+//         '꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱你回来辣',
+//       ]
+//       document.title = arr[Math.ceil(Math.random() * 8)]
+//       timer = setTimeout(() => {
+//         document.title = to.meta.title
+//       }, 5000)
+//     }
+//   })
+
+
+//   next();
+// });
+
+
+
+
+
+export default router
