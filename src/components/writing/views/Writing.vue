@@ -38,11 +38,11 @@
             :file-list="fileList"
             list-type="picture"
             :before-remove="beforeRemove"
-            
+            :on-remove="handleRemove"
             :on-exceed="handleExceed"
             :http-request="uploadSectionFile"
             :auto-upload="false"
-
+            :on-change="onChange"
             ref="upload"
           >
             <i class="el-icon-upload"></i>
@@ -110,15 +110,15 @@ export default {
       fileList: [], // 图片暂存 没有它就不显示缩略图
       md: "@[toc](目录)\n\n、@#￥%……&*目录结构分割@#￥%……&*、\n\n", // 文章内容 markdown部分
       html: "", // markdown解析成html
-      mdContent:'', // 文章目录
-
+      mdContent: '', // 文章目录
+      coverRequirePath:'' , // 封面图片
       // saveFromData: new FormData(), // 封面图片临时保存 保存草稿 若发布 则清空
       mdPic: new Map(), // md文章临时图片地址
     };
   },
 
   computed: {
-    ...mapGetters(['get_toolbars', 'get_querySearchAsync', 'get_uploadFromData']),
+    ...mapGetters(['get_toolbars', 'get_querySearchAsync']),
   },
   methods: {
     ...mapActions(['action_querySearchAsync', 'action_uploadSectionFile', 'action_PublishButton', 'action_PublishPic']),
@@ -207,15 +207,33 @@ export default {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
     // // 封面图片从临时草稿移除
-    // handleRemove () {
-    //   this.saveFromData.delete('pic');
-    // },
+    handleRemove () {
+      // this.saveFromData.delete('pic');
+      // console.log('handleRemove')
+      this.coverRequirePath = ''
+    },
     // // 封面图片保存于临时草稿
-    // onChange (file) {
-      
-    //   this.saveFromData.append('pic', file.raw)
-    //   this.action_PublishPic({ file })
-    // },
+    onChange (file) {
+
+      // this.saveFromData.append('pic', file.raw)
+      // this.action_PublishPic({ file })
+
+      // console.log(file.raw)
+      var reader = new FileReader()
+      reader.readAsDataURL(file.raw)
+      reader.onload = () => {
+        // console.log('file 转 base64结果：' + reader.result)
+        // this.iconBase64 = reader.result
+
+        // console.log(reader.result)
+        // var theData = state.uploadFromData
+        // theData.append('coverRequirePath', reader.result) // 封面
+        this.coverRequirePath = reader.result
+      }
+      reader.onerror = function (error) {
+        console.log('Error: ', error)
+      }
+    },
     // 文件上传触发的函数 :http-request="uploadSectionFile"
     uploadSectionFile () {
       // var thatStore = this.$store
@@ -229,6 +247,7 @@ export default {
     // 发布文章
     PublishButton () {
       var theTitle = this.title,
+      coverRequirePath = this.coverRequirePath,
         theCategory = this.category,
         theSynopsis = this.synopsis,
         themd = this.md,
@@ -238,8 +257,8 @@ export default {
       this.mdPic.forEach((item) => {
         themdPic.push(item)
       })
-      if (this.get_uploadFromData.get('coverRequirePath') && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
-        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic ,theCatalog });
+      if (coverRequirePath.length != 0 && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
+        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic, theCatalog });
         this.$refs.upload.submit();// submit用于触发 uploadSectionFile
       } else {
         this.$message.error('需要将标题、分类、简介和封面图片都填充完整');

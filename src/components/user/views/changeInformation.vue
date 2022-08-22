@@ -6,6 +6,23 @@
       label-width="80px"
       @submit.native.prevent
     >
+      <el-form-item label="头像">
+        <el-upload
+          class="avatar-uploader"
+          action=""
+          drag
+          accept="image/jpeg, image/png, image/jpg"
+
+          :auto-upload="false"
+          :show-file-list="false"
+          :on-change="onChange"
+          :on-remove="handleRemove"
+        >
+          <img v-if="user_portrait" :src="user_portrait" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
+
       <el-form-item label="昵称">
         <el-input v-model="user_name"></el-input>
       </el-form-item>
@@ -53,6 +70,14 @@ export default {
   },
   computed: {
     ...mapGetters(['get_user']),
+    user_portrait: {
+      get () {
+        return this.get_user.portrait
+      },
+      set (newVal) {
+        this.$store.commit('set_user_portrait', newVal)
+      }
+    },
     user_name: {
       get () {
         return this.get_user.name
@@ -82,8 +107,7 @@ export default {
         return this.get_user.sex
       },
       set (newVal) {
-        // this.$store.commit('modelData', newVal)
-        console.log(this.$store.commit('set_user_sex', newVal))
+        this.$store.commit('set_user_sex', newVal)
       }
     },
   },
@@ -91,7 +115,70 @@ export default {
     ...mapActions(['action_GET_USERINFROMATION', 'action_SUBMIT_USERDATA']),
     submitData () {
       this.action_SUBMIT_USERDATA()
-    }
+    },
+
+    // // 图片移除
+    handleRemove () {
+      this.user_portrait = null
+    },
+    // // 图片保存
+    onChange (file) {
+      // 通过FileReader.readAsDataURL(file)可以获取一段data:base64的字符串
+      // 通过URL.createObjectURL(blob)可以获取当前文件的一个内存URL
+      // this.user_portrait = URL.createObjectURL(file.raw);
+      // console.log(this.user_portrait)
+      var reader = new FileReader()
+      reader.readAsDataURL(file.raw)
+      reader.onload = () => {
+        this.user_portrait = reader.result
+        // console.log(this.user_portrait)
+      }
+      reader.onerror = function (error) {
+        console.log('Error: ', error)
+      }
+    },
+
+    // handleAvatarSuccess (res, file) {
+    //   this.user_portrait = URL.createObjectURL(file.raw);
+    // },
+    // beforeAvatarUpload (file) {
+    //   const isJPG = file.type === 'image/jpeg';
+    //   const isLt2M = file.size / 1024 / 1024 < 2;
+
+    //   if (!isJPG) {
+    //     this.$message.error('上传头像图片只能是 JPG 格式!');
+    //   }
+    //   if (!isLt2M) {
+    //     this.$message.error('上传头像图片大小不能超过 2MB!');
+    //   }
+    //   return isJPG && isLt2M;
+    // },
   },
 }
 </script>
+
+<style scoped>
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+</style>

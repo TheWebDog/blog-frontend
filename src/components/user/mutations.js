@@ -8,7 +8,7 @@ export default {
 
     var token = VueCookies.get('token')
     axios
-      .post('/user/check', { token })
+      .post('/user/getTokenInformation', { token })
       .then((res) => {
         if (res.data == '未登录') {
           state.user = '未登录'
@@ -23,11 +23,32 @@ export default {
   },
 
   [SUBMIT_USERDATA]: function (state) {
-    console.log(state.user)
+    var token = VueCookies.get('token')
+    var user = state.user
+    // console.log(user)
+    axios
+    .post('/user/updateMyInformation', { token ,user })
+    .then((res) => {
+      if (res.data == '未登录') {
+        state.user = '未登录'
+        alert('未登录')
+      }
+      if (res.data.token) {
+        this.$cookies.set('token', res.data.token)
+        alert('已保存')
+      }
+      console.log(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   },  
 
 
   // 编辑用户
+  set_user_portrait: function (state ,value) {
+    state.user.portrait = value
+  },
   set_user_name: function (state ,value) {
     state.user.name = value
   },

@@ -19,7 +19,7 @@
     box-sizing: border-box;
     padding: 20px 5px;
   }
-  .Home_el_main {
+  .el-main {
     overflow: hidden !important;
     width: 100%;
     padding: 0px !important;

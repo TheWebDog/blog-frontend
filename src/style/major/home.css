@@ -53,7 +53,7 @@ body::-webkit-scrollbar-track {
 
 .el-main{
   box-sizing: border-box;
-  
+  padding-bottom: 0px !important;
 }
 .Home_el_main{
   overflow: visible !important;

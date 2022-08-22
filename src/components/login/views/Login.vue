@@ -128,6 +128,7 @@ export default {
               // this.$cookies.set('key', { power }, '1d')
               // this.$cookies.set('name', { name }, '1d')
               // this.$cookies.set('userId', { _id }, '1d')
+              // console.log(res.data.token)
               this.$cookies.set('token', res.data.token)
               this.$message({
                 showClose: true,

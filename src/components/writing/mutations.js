@@ -1,4 +1,4 @@
-import { GET_SERVER_CLASSIFY, UPLOAD_File, SET_File,SET_PIC } from './type'
+import { GET_SERVER_CLASSIFY, UPLOAD_File, SET_File } from './type'
 import axios from 'axios'
 
 export default {
@@ -25,24 +25,24 @@ export default {
     // theData.append('mdPic', themdPic) // 有关图片路径
     theData.append('mdCatalog', theCatalog) // 文章目录
   },
-  // 填入图片-发布
-  [SET_PIC]: function (state, data) {
-    var { file } = data
-    // console.log(file.raw)
-    var reader = new FileReader()
-    reader.readAsDataURL(file.raw)
-    reader.onload = () => {
-      // console.log('file 转 base64结果：' + reader.result)
-      // this.iconBase64 = reader.result
+  // // 填入图片-发布
+  // [SET_PIC]: function (state, data) {
+  //   var { file } = data
+  //   // console.log(file.raw)
+  //   var reader = new FileReader()
+  //   reader.readAsDataURL(file.raw)
+  //   reader.onload = () => {
+  //     // console.log('file 转 base64结果：' + reader.result)
+  //     // this.iconBase64 = reader.result
 
-      // console.log(reader.result)
-      var theData = state.uploadFromData
-      theData.append('coverRequirePath', reader.result) // 封面
-    }
-    reader.onerror = function (error) {
-      console.log('Error: ', error)
-    }
-  },
+  //     // console.log(reader.result)
+  //     var theData = state.uploadFromData
+  //     theData.append('coverRequirePath', reader.result) // 封面
+  //   }
+  //   reader.onerror = function (error) {
+  //     console.log('Error: ', error)
+  //   }
+  // },
   // 上传文章
   [UPLOAD_File]: function (state,obj) {
     var theData = state.uploadFromData

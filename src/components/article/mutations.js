@@ -59,6 +59,7 @@ export default {
       .post('/page/getArticleComment', { articleId })
       .then((res) => {
         state.articleComment = res.data
+        // console.log( state.articleComment )
       })
       .catch((err) => {
         console.log(err)

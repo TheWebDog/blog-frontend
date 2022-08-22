@@ -6,7 +6,7 @@ export default {
   get_querySearchAsync: function (state) {
     return state.classifyList
   },
-  get_uploadFromData: function (state) {
-    return state.uploadFromData
-  },
+  // get_uploadFromData: function (state) {
+  //   return state.uploadFromData
+  // },
 }

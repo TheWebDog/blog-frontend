@@ -34,7 +34,7 @@
             <div class="article_comment_li_master_left">
               <el-avatar
                 class="comment_left_header"
-                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                :src="item.userPortrait != '' ?  item.userPortrait : require('./wode.png')"
               ></el-avatar>
             </div>
             <div class="article_comment_li_master_right">
@@ -60,7 +60,7 @@
                 <div class="article_comment_li_commented_left">
                   <el-avatar
                     class="comment_left_header"
-                    src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                    :src="item.userPortrait != '' ?  item.userPortrait : require('./wode.png')"
                   ></el-avatar>
                 </div>
                 <div class="article_comment_li_commented_right">
