@@ -27,7 +27,7 @@
         />
       </svg>
 
-      <img class="user_portrait" :src=" get_user.portrait != null ?  get_user.portrait : require('./wode.png')" alt="" />
+      <img class="user_portrait" :src=" get_user.portrait != null ?  get_user.portrait : require('./favicon.png')" alt="" />
     </div>
 
     <div class="background_curcle"></div>

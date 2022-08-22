@@ -135,6 +135,9 @@
   word-wrap: break-word;
   overflow: hidden;
 }
+.el-avatar{
+  background: none;
+}
 
 
 .hljs{
