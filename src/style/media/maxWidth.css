@@ -1,4 +1,7 @@
 @media (max-width: 800px) {
+  .Home_body {
+    width: 100%;
+}
   .writing_header {
     max-width: 450px;
     /* min-width: 315px; */
@@ -19,7 +22,7 @@
   .Home_el_main {
     overflow: hidden !important;
     width: 100%;
-    padding: 20px !important;
+    padding: 0px !important;
   }
   .el-drawer {
     width: 220px !important;

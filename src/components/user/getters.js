@@ -1,6 +1,6 @@
 
 export default {
-  // get_toolbars: function (state) {
-  //   return state.toolbars
-  // },
+  get_user: function (state) {
+    return state.user
+  },
 }

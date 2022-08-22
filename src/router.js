@@ -25,6 +25,19 @@ export default new VueRouter({
         var token = VueCookies.get('token')
         if (token) {
           next()
+          // axios
+          // .post('/user/check', {token})
+          // .then((res) => {
+          //   if (res.data.user) {
+          //     next()
+          //   } else {
+          //     next('/login')
+          //   }
+          // })
+          // .catch((err) => {
+          //   console.log(err)
+          // })
+          
         } else {
           next('/login')
         }
@@ -42,6 +55,34 @@ export default new VueRouter({
           name: 'userInformation',
           component: () => {
             return import('./components/user/views/userInformation.vue')
+          },
+        },
+        {
+          path: 'myReply',
+          name: 'myReply',
+          component: () => {
+            return import('./components/user/views/myReply.vue')
+          },
+        },
+        {
+          path: 'myComments',
+          name: 'myComments',
+          component: () => {
+            return import('./components/user/views/myComments.vue')
+          },
+        },
+        {
+          path: 'myCollection',
+          name: 'myCollection',
+          component: () => {
+            return import('./components/user/views/myCollection.vue')
+          },
+        },
+        {
+          path: 'changeInformation',
+          name: 'changeInformation',
+          component: () => {
+            return import('./components/user/views/changeInformation.vue')
           },
         },
       ]

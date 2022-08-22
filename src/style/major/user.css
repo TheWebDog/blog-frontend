@@ -52,7 +52,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin: 100px 0 30px 0;
+  margin: 0 0 30px 0;
   display: flex;
   width: 340px;
   flex-wrap: wrap;
@@ -60,18 +60,23 @@
 .information {
   font-size: 16px;
   font-weight: 900;
-  width: 150px;
   border-bottom: 5px solid #515151;
+
+  width: 170px;
+  margin: 0 0 50px 0;
+}
+.information_name ,.information_sex{
+  width: 150px;
   margin: 0 20px 50px 0;
 }
 .information_personalSignature {
-  width: 320px;
-  margin: 0 20px 0 0;
+  width: 340px;
+  margin: 0 0 0 0;
 }
 .user_btn_container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 720px;
+  max-width: 540px;
   margin: 0 auto;
   /* position: absolute; */
   /* top: 430px; */
@@ -88,8 +93,36 @@
   margin: 10px;
 }
 
-@media (max-width: 750px) {
+.user_continer{
+  margin-top: 100px;
+}
+
+@media (max-width: 560px) {
+  .information_container {
+    width: 310px;
+    margin: 0 0 20px 0;
+  }
   .user_btn_container {
-    max-width: 360px;
+    max-width: 320px;
+  }
+  .user_btn {
+    width: 320px;
+    height: 55px;
+    border: 5px solid #515151;
+    border-radius: 15px;
+    margin: 10px 0px;
+  }
+
+  .information {
+    width: 150px;
+    margin: 0 0 30px 0;
+  }
+  .information_name ,.information_sex{
+    width: 150px;
+    margin: 0 10px 30px 0;
+  }
+  .information_personalSignature {
+    width: 310px;
+    margin: 0 0 0 0;
   }
 }

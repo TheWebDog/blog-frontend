@@ -17,7 +17,7 @@
       <el-table-column prop="name" label="用户名" width="120">
       </el-table-column>
 
-      <el-table-column prop="password" label="哈希密码" width="120"></el-table-column>
+      <!-- <el-table-column prop="password" label="(加盐的)哈希密码" width="120"></el-table-column> -->
 
       <el-table-column prop="power" label="权限等级" width="100"></el-table-column>
 

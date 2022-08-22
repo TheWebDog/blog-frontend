@@ -27,35 +27,22 @@
         />
       </svg>
 
-      <img class="user_portrait" :src="portrait" alt="" />
+      <img class="user_portrait" :src=" get_user.portrait != null ?  get_user.portrait : require('./wode.png')" alt="" />
     </div>
 
     <div class="background_curcle"></div>
 
-    <router-view v-if="$store.state.isRouterAlive"></router-view>
+    <router-view class="user_continer" v-if="$store.state.isRouterAlive"></router-view>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import VueCookies from 'vue-cookies'
+
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "User",
   created () {
-    var token = VueCookies.get('token')
-    axios
-      .post('/user/check', { token })
-      .then((res) => {
-        // console.log(res.data.user)
-        this.user = res.data.user
-        if (res.data.user.portrait != null) {
-          this.portrait = res.data.user.portrait
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    // this.action_GET_USERINFROMATION()
   },
   data () {
     return {
@@ -70,10 +57,10 @@ export default {
     })
   },
   computed: {
-    ...mapGetters([]),
+    ...mapGetters([ 'get_user' ]),
   },
   methods: {
-    ...mapActions([]),
+    ...mapActions([ 'action_GET_USERINFROMATION' ]),
     sign_out () {
       this.$cookies.remove('token')
       this.$router.push('/login')
