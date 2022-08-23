@@ -124,7 +124,7 @@ export default {
     // // 图片保存
     onChange (file) {
 
-      const isLt2M = file.size / 1024 / 1024 < 1
+      const isLt2M = file.size / 1024 / 1024 < 0.1
 
       if (isLt2M) {
         // 通过FileReader.readAsDataURL(file)可以获取一段data:base64的字符串
@@ -143,7 +143,7 @@ export default {
       } else {
 
         this.$message({
-          message: '头像不能超过 1MB!',
+          message: '头像不能超过 100kb!',
           type: 'warning'
         })
 
