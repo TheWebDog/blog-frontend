@@ -19,8 +19,8 @@ import axios from "axios"
 
 
 // 全局配置axios的请求根路径
-axios.defaults.baseURL = "http://localhost:3000"
-// axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
+// axios.defaults.baseURL = "http://localhost:3000"
+axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
 
 // 按需导入 Loading 组件
 import { Loading } from 'element-ui'
