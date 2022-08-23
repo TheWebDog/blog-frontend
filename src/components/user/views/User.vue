@@ -42,7 +42,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "User",
   created () {
-    // this.action_GET_USERINFROMATION()
+    this.action_GET_USERINFROMATION()
   },
   data () {
     return {

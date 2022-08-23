@@ -26,7 +26,7 @@ export default {
   name: "userInformation",
   created () {
     // var thatCommit = this.$store.commit
-    this.action_GET_USERINFROMATION()
+    // this.action_GET_USERINFROMATION()
   },
   data () {
     return {
