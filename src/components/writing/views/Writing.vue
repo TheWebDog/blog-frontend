@@ -6,6 +6,8 @@
           <h1 style="text-align: center">发布文章</h1>
           <el-input
             v-model="title"
+            maxlength="24"
+            show-word-limit
             placeholder="请输入文章标题(小于24个字)"
             clearable
           ></el-input>
@@ -20,6 +22,8 @@
             class="writing_synopsis"
             type="textarea"
             :rows="3"
+            maxlength="45"
+            show-word-limit
             placeholder="简介(小于45个字)"
             v-model="synopsis"
             resize="none"
@@ -258,7 +262,7 @@ export default {
         themdPic.push(item)
       })
       if (coverRequirePath.length != 0 && themd.length != 0 && theTitle.length != 0 && theCategory.length != 0 && theSynopsis.length != 0) {
-        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic, theCatalog });
+        this.action_PublishButton({ theTitle, theCategory, theSynopsis, themd, thehtml, themdPic, theCatalog ,coverRequirePath});
         this.$refs.upload.submit();// submit用于触发 uploadSectionFile
       } else {
         this.$message.error('需要将标题、分类、简介和封面图片都填充完整');
