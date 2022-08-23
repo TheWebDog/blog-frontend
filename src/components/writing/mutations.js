@@ -15,7 +15,7 @@ export default {
   },
   // 填入文章-发布
   [SET_File]: function (state, data) {
-    var { theTitle, theCategory, theSynopsis, themd, thehtml, theCatalog } = data
+    var { theTitle, theCategory, theSynopsis, themd, thehtml, theCatalog ,coverRequirePath} = data
     var theData = state.uploadFromData
     theData.append('title', theTitle) // 标题
     theData.append('category', theCategory) // 分类
@@ -24,6 +24,7 @@ export default {
     theData.append('html', thehtml) // 转化后的html
     // theData.append('mdPic', themdPic) // 有关图片路径
     theData.append('mdCatalog', theCatalog) // 文章目录
+    theData.append('coverRequirePath', coverRequirePath) // 文章封面图片
   },
   // // 填入图片-发布
   // [SET_PIC]: function (state, data) {
