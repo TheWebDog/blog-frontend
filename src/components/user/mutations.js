@@ -34,7 +34,7 @@ export default {
         alert('未登录')
       }
       if (res.data.token) {
-        this.$cookies.set('token', res.data.token)
+        VueCookies.set('token', res.data.token)
         alert('已保存')
       }
       console.log(res.data)
