@@ -37,7 +37,7 @@ export default {
         VueCookies.set('token', res.data.token)
         alert('已保存')
       }
-      console.log(res.data)
+      // console.log(res.data)
     })
     .catch((err) => {
       console.log(err)
