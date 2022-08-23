@@ -29,13 +29,11 @@ export default {
     axios
     .post('/user/updateMyInformation', { token ,user })
     .then((res) => {
-      if (res.data == '未登录') {
-        state.user = '未登录'
-        alert('未登录')
-      }
       if (res.data.token) {
         VueCookies.set('token', res.data.token)
         alert('已保存')
+      } else {
+        alert(res.data)
       }
       // console.log(res.data)
     })
