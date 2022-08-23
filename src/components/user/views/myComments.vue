@@ -67,7 +67,7 @@
           <input class="articleManage_search" type="text" placeholder="输入关键字搜索" v-model="comment_search" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" type="primary" @click="handleUserChange(scope.$index, scope.row)">
+          <el-button size="mini" type="primary" @click="handleOriginalArticle(scope.$index, scope.row)">
             查看原文
           </el-button>
           <el-button size="mini" type="danger" @click="handleCommentDelete(scope.$index, scope.row)">删除</el-button>
@@ -107,6 +107,12 @@ export default {
   },
   methods: {
     ...mapActions([]),
+    handleOriginalArticle () {
+      
+    },
+    handleCommentDelete () {
+      
+    },
   },
 }
 </script>
