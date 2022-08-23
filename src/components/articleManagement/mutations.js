@@ -12,9 +12,10 @@ export default {
       })
   },
   [REMOVE_DATA]: function (state, obj) {
-    var { id } = obj
+    var { row } = obj
+    delete row.coverRequirePath
     axios
-      .post('/page/removeArticle', { id })
+      .post('/page/removeArticle', { row })
       .then((res) => {
         if (res.data !== '删除成功') {
           alert(res.data)

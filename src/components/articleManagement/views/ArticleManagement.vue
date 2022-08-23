@@ -94,10 +94,10 @@ export default {
     handleDelete (index, row) {
       // 删除数据
       // var ActiveIsFinish = this.$store.commit('ActiveIsFinish')
-      var id = row._id
-      // var thatStore = this.$store
+      // var id = row.pageId
+      // console.log(row)
       var thatCommit = this.$store.commit
-      this.action_REMOVE_DATA({ id, thatCommit })
+      this.action_REMOVE_DATA({ row, thatCommit })
       // this.knowfinished()
     }
   },
