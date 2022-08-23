@@ -43,12 +43,16 @@ export default {
     window.onresize = () => {
       return (() => {
         // this.screenWidth = document.body.scrollWidth
-        this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+        this.$store.commit("upDateScreenWidth", document.body.clientWidth+12)
+        // console.log(document.body.scrollWidth)
+        // console.log(document.body.clientWidth+12)
+        // console.log(document.body.offsetHeight)
+        // console.log(document.body.innerWidth)
       })()
     }
   },
   created () {
-    this.$store.commit("upDateScreenWidth", document.body.clientWidth)
+    this.$store.commit("upDateScreenWidth", document.body.clientWidth+12)
   }
 }
 </script>

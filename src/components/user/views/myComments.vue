@@ -67,7 +67,7 @@
           <input class="articleManage_search" type="text" placeholder="输入关键字搜索" v-model="comment_search" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" type="primary" @click="handleOriginalArticle(scope.$index, scope.row)">
+          <el-button size="mini" type="primary" @click="to_article(scope.$index, scope.row)">
             查看原文
           </el-button>
           <el-button size="mini" type="danger" @click="handleCommentDelete(scope.$index, scope.row)">删除</el-button>
@@ -106,12 +106,16 @@ export default {
     ...mapGetters([]),
   },
   methods: {
-    ...mapActions([]),
-    handleOriginalArticle () {
-      
+    ...mapActions([ 'action_remove_comment' ]),
+    to_article (index, row) {
+      this.$router.push(`/article/${row.articleId}`)
     },
-    handleCommentDelete () {
-      
+    handleCommentDelete (index, row) {
+      // 删除数据
+      var id = row._id
+      console.log(id)
+      var thatCommit = this.$store.commit
+      this.action_remove_comment({ id, thatCommit })
     },
   },
 }

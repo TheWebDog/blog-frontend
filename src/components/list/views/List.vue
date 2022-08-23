@@ -57,7 +57,7 @@ export default {
   name: "List",
   data () {
     return {
-      screenWidth: document.body.clientWidth,
+      screenWidth: document.body.scrollWidth,
     }
   },
   computed: {
@@ -96,7 +96,7 @@ export default {
   mounted () {
     window.onresize = () => {
       return (() => {
-        this.screenWidth = document.body.clientWidth
+        this.screenWidth = document.body.scrollWidth
       })()
     }
   },
