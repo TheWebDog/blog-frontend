@@ -60,7 +60,7 @@
                 <div class="article_comment_li_commented_left">
                   <el-avatar
                     class="comment_left_header"
-                    :src="item.userPortrait != '' ?  item.userPortrait : require('./favicon.png')"
+                    :src="childrenItem.userPortrait != '' ?  childrenItem.userPortrait : require('./favicon.png')"
                   ></el-avatar>
                 </div>
                 <div class="article_comment_li_commented_right">
