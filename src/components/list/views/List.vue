@@ -3,14 +3,23 @@
     <el-row :gutter="12">
       <el-col :span="24">
         <ul class="list_ul">
-          <li class="list_li" v-for="(item) in get_articleList" :key="item._id" @click="to_article(item.pageId)"
-            v-scroll-reveal.reset>
-            <el-card class="list_li_div" shadow="hover"  v-loading="get_loading">
+          <li
+            class="list_li"
+            v-for="item in get_articleList"
+            :key="item._id"
+            @click="to_article(item.pageId)"
+            v-scroll-reveal.reset
+          >
+            <el-card class="list_li_div" shadow="hover" v-loading="get_loading">
               <!-- <el-image class="el_card_el_image" :src="item.coverRequirePath" fit="contain"></el-image> -->
               <!-- el-image的bug喜加一 -->
               <!-- {{item.coverRequirePath}} -->
-              <img class="el_card_el_image" :src="item.coverRequirePath" alt="图片又没了？"
-                onerror="this.src='../../../static/picNotFound.png';this.οnerrοr=null">
+              <img
+                class="el_card_el_image"
+                :src="item.coverRequirePath"
+                alt="图片又没了？"
+                onerror="this.src='../../../static/picNotFound.png';this.οnerrοr=null"
+              />
               <ul class="textIntroduction_ul">
                 <li class="textIntroduction_li">
                   <div class="el_card_title">{{ item.title }}</div>
@@ -36,8 +45,17 @@
     </el-row>
 
     <!-- 分页 -->
-    <el-pagination :small="media_lessThan_width500px" background layout="prev, pager, next" :page-size="10"
-      :pager-count="5" :total="get_articleList.length + 20" @current-change="handleCurrentChange">
+    <el-pagination
+      class="bottom_pagination"
+      :small="media_lessThan_width500px"
+      background
+      layout="prev, pager, next"
+      :page-size="pageSize"
+      :pager-count="5"
+      :total="get_allArticleList.length"
+      @current-change="handleCurrentChange"
+      :hide-on-single-page="true"
+    >
     </el-pagination>
   </div>
 </template>
@@ -58,21 +76,24 @@ export default {
   data () {
     return {
       screenWidth: document.body.scrollWidth,
+      pageSize : 5 , // 每页显示数据的个数
     }
   },
   computed: {
-    ...mapGetters(['get_articleList','get_loading']),
+    ...mapGetters(['get_articleList', 'get_loading' ,'get_allArticleList']),
     media_lessThan_width500px () {
       return this.screenWidth < 500
     },
   },
   methods: {
-    ...mapActions(['action_getArticleList']),
+    ...mapActions(['action_getArticleList' , 'action_CHANGE_LIST']),
     to_article (id) {
       this.$router.push(`/article/${id}`)
     },
     handleCurrentChange (val) {
-      console.log(`当前页: ${val}`);
+      var pageSize =this.pageSize
+      var value = (val - 1)*pageSize
+      this.action_CHANGE_LIST({value,pageSize})
     },
     // getPicbase64 (coverRequirePath ,callback) {
     //   var picUrl
