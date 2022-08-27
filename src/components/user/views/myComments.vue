@@ -1,15 +1,20 @@
 <template>
   <div>
-    
-    <el-table class="CommentManage_el_table" :data="
-      myComments.filter(
-        (data) =>
-          !comment_search ||
-          data.userComment.toLowerCase().includes(comment_search.toLowerCase())
-      )
-    " stripe style="width: 530px">
-
-    <el-table-column type="expand" width="60" label="展开">
+    <el-table
+      class="CommentManage_el_table"
+      :data="
+        myComments.filter(
+          (data) =>
+            !comment_search ||
+            data.userComment
+              .toLowerCase()
+              .includes(comment_search.toLowerCase())
+        )
+      "
+      stripe
+      style="width: 530px"
+    >
+      <el-table-column type="expand" width="60" label="展开">
         <template slot-scope="props">
           <div class="CommentManage_template_div_el_form">
             <el-form label-position="left" inline class="demo-table-expand">
@@ -19,8 +24,12 @@
               <br />
               <el-form-item label="回复：">
                 <ul class="CommentManage_childrenComment_ul">
-                  <li class="CommentManage_childrenComment_li" v-for="(childrenItem, childrenIndex) in props.row
-                  .childrenComment" :key="childrenIndex">
+                  <li
+                    class="CommentManage_childrenComment_li"
+                    v-for="(childrenItem, childrenIndex) in props.row
+                      .childrenComment"
+                    :key="childrenIndex"
+                  >
                     <div class="CommentManage_childrenComment">
                       <div class="CommentManage_childrenComment_container">
                         <div>用户名:</div>
@@ -35,12 +44,18 @@
                         </div>
                       </div>
                       <div class="CommentManage_childrenComment_container">
-                        <el-link :underline="false" class="children_delete" icon="el-icon-delete" @click="
-                          handleCommentChildrenDelete(
-                            childrenItem.userComment,
-                            props.row._id
-                          )
-                        ">删除</el-link>
+                        <el-link
+                          :underline="false"
+                          class="children_delete"
+                          icon="el-icon-delete"
+                          @click="
+                            handleCommentChildrenDelete(
+                              childrenItem.userComment,
+                              props.row._id
+                            )
+                          "
+                          >删除</el-link
+                        >
                       </div>
                     </div>
                   </li>
@@ -50,7 +65,6 @@
           </div>
         </template>
       </el-table-column>
-
 
       <el-table-column sortable prop="date" label="日期" width="130">
         <template slot-scope="scope">
@@ -64,18 +78,30 @@
 
       <el-table-column label="操作" width="190">
         <template slot="header">
-          <input class="articleManage_search" type="text" placeholder="输入关键字搜索" v-model="comment_search" />
+          <input
+            class="articleManage_search"
+            type="text"
+            placeholder="输入关键字搜索"
+            v-model="comment_search"
+          />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" type="primary" @click="to_article(scope.$index, scope.row)">
+          <el-button
+            size="mini"
+            type="primary"
+            @click="to_article(scope.$index, scope.row)"
+          >
             查看原文
           </el-button>
-          <el-button size="mini" type="danger" @click="handleCommentDelete(scope.$index, scope.row)">删除</el-button>
+          <el-button
+            size="mini"
+            type="danger"
+            @click="handleCommentDelete(scope.$index, scope.row)"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
-
     </el-table>
-
   </div>
 </template>
 
@@ -99,14 +125,14 @@ export default {
   data () {
     return {
       myComments: [],
-      comment_search : '',
+      comment_search: '',
     };
   },
   computed: {
     ...mapGetters([]),
   },
   methods: {
-    ...mapActions([ 'action_remove_comment' ]),
+    ...mapActions(['action_remove_comment']),
     to_article (index, row) {
       this.$router.push(`/article/${row.articleId}`)
     },

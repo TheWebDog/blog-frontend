@@ -2,24 +2,23 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import VueCookies from 'vue-cookies'
 import mavonEditor from 'mavon-editor' // 引入markdown 所有组件
 import 'mavon-editor/dist/css/index.css'
 
-
-Vue.directive('title', {              //单个修改标题
+Vue.directive('title', {
+  //单个修改标题
   inserted: function (el) {
-  document.title = el.dataset.title
-  }
+    document.title = el.dataset.title
+  },
 })
 
-import axios from "axios"
-
+import axios from 'axios'
 
 // 全局配置axios的请求根路径
-// axios.defaults.baseURL = "http://localhost:3000"
+// axios.defaults.baseURL = 'http://localhost:3000'
 axios.defaults.baseURL = "https://blog-backend-thewebdog.vercel.app/"
 
 // 按需导入 Loading 组件
@@ -28,12 +27,16 @@ import { Loading } from 'element-ui'
 // 配置请求拦截器
 let reqNum = 0
 let loadingInstance = null
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use((config) => {
   // 判断请求是否是 不需要loading的接口，如果不是，加载 LoadingBar
-  let url = config.url;
-  if (url.split('/').pop() !== 'search') {
+  let url = config.url
+  if (
+    url.split('/').pop() !== 'search' &&
+    url.split('/').pop() !== 'localhost:3000' &&
+    url.split('/').pop() !== 'collectionPage'
+  ) {
     // 开启 loading 效果
-    // console.log('为了',url.split('/').pop(),'开启 loading 效果')
+    console.log('为了',url.split('/').pop(),'开启 loading 效果')
     loadingInstance = Loading.service({ fullscreen: true })
     reqNum++
   }
@@ -42,9 +45,13 @@ axios.interceptors.request.use(config => {
 })
 
 // 配置响应拦截器
-axios.interceptors.response.use(response => {
+axios.interceptors.response.use((response) => {
   let url = response.config.url
-  if (url.split('/').pop() !== 'search') {
+  if (
+    url.split('/').pop() !== 'search' &&
+    url.split('/').pop() !== 'localhost:3000' &&
+    url.split('/').pop() !== 'collectionPage'
+  ) {
     reqNum--
     if (reqNum <= 0) {
       // console.log('关闭 loading 效果')
@@ -60,7 +67,7 @@ axios.interceptors.response.use(response => {
 Vue.prototype.$axios = axios
 // 今后在每个.vue组件中要发起请求,直接调用 this.$axios.xxx
 
-import VueScrollReveal from 'vue-scroll-reveal';
+import VueScrollReveal from 'vue-scroll-reveal'
 Vue.use(VueScrollReveal, {
   class: 'v-scroll-reveal',
   duration: 800,
@@ -70,11 +77,12 @@ Vue.use(VueScrollReveal, {
   mobile: true,
   useDelay: 'always',
   origin: 'left',
-  delay: 80
-});
+  delay: 80,
+})
 
-
-{/* <script  src='../node_modules/mavon-editor/dist/highlightjs/highlight.min.js'></script> */ }
+{
+  /* <script  src='../node_modules/mavon-editor/dist/highlightjs/highlight.min.js'></script> */
+}
 // import moduleName from 'module';
 // import hljs from 'highlight.js' // 代码高亮
 // import 'highlight.js/styles/github.css';
@@ -93,8 +101,8 @@ Vue.use(mavonEditor) // markdown  挂在到全局
 Vue.config.productionTip = false
 
 router.afterEach(() => {
-  window.scrollTo(0, 0);
-});
+  window.scrollTo(0, 0)
+})
 
 new Vue({
   router,

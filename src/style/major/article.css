@@ -14,6 +14,11 @@
 .article_background_img >img {
   object-position: right;
 }
+.article_header{
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e3e3e3e3;
+}
 .article_title {
   font-size: 30px;
   font-weight: 900;
@@ -31,11 +36,9 @@
 }
 .article_synopsis {
   font-weight: normal;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
   display: flex;
   /* align-items: center; */
-  border-bottom: 2px solid #e3e3e3e3;
+  
 }
 .article_synopsis_first {
   font-size: 12px;
@@ -47,6 +50,26 @@
   font-size: 12px;
   width: calc(100% - 65px);
 }
+
+.article_fun{
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+.article_fun >div{
+  width: 25px;
+  margin-left: 5px;
+}
+.article_fun_num{
+  text-align: center;
+  font-size: 12px;
+}
+.fun_guankan >svg{
+  cursor:url(../cursor/1/Default.png),auto !important;
+}
+
+
+
 .article_date_bottom{
   font-weight: normal;
   font-size: 12px;

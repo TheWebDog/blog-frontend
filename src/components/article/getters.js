@@ -5,6 +5,9 @@ export default {
   get_ArticleComment: function (state) {
     return state.articleComment
   },
+  get_Favorites: function (state) {
+    return state.favorites
+  },
   // get_picUrl: function (state) {
   //   return state.picUrl
   // },

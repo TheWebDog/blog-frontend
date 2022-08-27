@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { CLEAR_COMMENT, CLEAR_ARTICLE, GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
+import VueCookies from 'vue-cookies'
+import {  CLEAR_COMMENT, CLEAR_ARTICLE, GET_ARTICLEPAGE, SUBMIT_COMMENT, GET_COMMENT ,SUBMIT_COMMENT_COMMENT} from './type'
 export default {
   [CLEAR_ARTICLE]: function (state) {
     state.article = ''
@@ -7,11 +8,35 @@ export default {
   [CLEAR_COMMENT]: function (state) {
     state.articleComment= []
   },
-  [GET_ARTICLEPAGE]: function (state, id) {
-    axios
+  [GET_ARTICLEPAGE]:async function (state, id) {
+    var myCollection = []
+
+    if (VueCookies.isKey('token')) {
+      var token = VueCookies.get('token')
+      
+      await axios
+        .post('/user/check', { token })
+        .then((res) => {
+          if (res.data.user) {
+            myCollection = res.data.user.myCollection
+            // console.log(myCollection)
+          } else {
+            console.log(res.data)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
+    await axios
       .post('/page/getArticlePage', id)
       .then((res) => {
         state.article = res.data
+        state.favorites = myCollection.includes(res.data._id) ? true : false
+
+        // console.log(myCollection)
+        // console.log(res.data._id)
         // var coverRequirePath = res.data.coverRequirePath
         // axios
         //   .get(coverRequirePath)
@@ -80,5 +105,11 @@ export default {
       .catch((err) => {
         console.log(err)
       })
+  },
+
+  // 改变收藏数量
+  set_article_favorites: function (state, isfavorites) {
+      state.article.favorites += isfavorites? 1 :-1
+      state.favorites = isfavorites
   },
 }

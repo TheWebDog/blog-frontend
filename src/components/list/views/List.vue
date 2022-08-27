@@ -76,24 +76,39 @@ export default {
   data () {
     return {
       screenWidth: document.body.scrollWidth,
-      pageSize : 5 , // 每页显示数据的个数
+      pageSize: 5, // 每页显示数据的个数
     }
   },
   computed: {
-    ...mapGetters(['get_articleList', 'get_loading' ,'get_allArticleList']),
+    ...mapGetters(['get_articleList', 'get_loading', 'get_allArticleList']),
     media_lessThan_width500px () {
       return this.screenWidth < 500
     },
   },
   methods: {
-    ...mapActions(['action_getArticleList' , 'action_CHANGE_LIST']),
+    ...mapActions(['action_getArticleList', 'action_CHANGE_LIST' ,'action_clearArticle' ,'action_clearComment']),
     to_article (id) {
       this.$router.push(`/article/${id}`)
     },
     handleCurrentChange (val) {
-      var pageSize =this.pageSize
-      var value = (val - 1)*pageSize
-      this.action_CHANGE_LIST({value,pageSize})
+
+      // scrollTop获取元素顶部滚轮离顶部的长度
+      var step = document.documentElement.scrollTop;
+      var time = null;
+      time = setInterval(function () {
+        // 每次30px
+        step -= 30;
+        if (step <= 0) {
+          clearInterval(time);
+        }
+        // 滚动到指定位置，scrollTo()接收两个参数：X，Y
+        scrollTo(0, step);
+        //这里时间太慢或者步长太大的话会不流畅，尽量快一点；当然也可以用JQ的动画去写，这样写可以不利用JQ，方便一点
+      }, 10);
+
+      var pageSize = this.pageSize
+      var value = (val - 1) * pageSize
+      this.action_CHANGE_LIST({ value, pageSize })
     },
     // getPicbase64 (coverRequirePath ,callback) {
     //   var picUrl
@@ -113,6 +128,8 @@ export default {
   },
   created () {
     this.action_getArticleList(this.$router.currentRoute.fullPath)
+    this.action_clearComment()
+    this.action_clearArticle()
   },
   mounted () {
     window.onresize = () => {
